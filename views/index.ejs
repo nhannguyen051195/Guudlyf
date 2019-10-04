@@ -1,0 +1,141 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+<style>
+    body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    #wrapper {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #ccc;
+        overflow: hidden;
+    }
+
+    #mask {
+        width: 800%;
+        height: 100%;
+        background-color: #eee;
+    }
+
+    .item {
+        width: 12.5%;
+        height: 100%;
+        float: left;
+        background-color: #ddd;
+    }
+
+    .content {
+        width: 400px;
+        height: 300px;
+        top: 20%;
+        margin: 0 auto;
+        background-color: #aaa;
+        position: relative;
+    }
+
+    .selected {
+        background: #fff;
+        font-weight: 700;
+    }
+
+    .clear {
+        clear: both;
+    }
+</style>
+<div id="wrapper">
+    <div id="mask">
+
+        <div id="item1" class="item">
+
+            <a name="item1"></a>
+            <div class="content">item1
+                <a href="#item1" class="panel">1</a> |
+                <a href="#item2" class="panel">2</a> |
+                <a href="#item3" class="panel">3</a> |
+                <a href="#item4" class="panel">4</a> |
+                <a href="#item5" class="panel">5</a>
+            </div>
+
+
+        </div>
+
+        <div id="item2" class="item">
+            <a name="item2"></a>
+            <div class="content">item2 <a href="#item1" class="panel">back</a></div>
+            <a href="#item1" class="panel">1</a> |
+            <a href="#item2" class="panel">2</a> |
+            <a href="#item3" class="panel">3</a> |
+            <a href="#item4" class="panel">4</a> |
+            <a href="#item5" class="panel">5</a>
+        </div>
+
+        <div id="item3" class="item">
+            <a name="item3"></a>
+            <div class="content">item3 <a href="#item1" class="panel">back</a></div>
+            <a href="#item1" class="panel">1</a> |
+            <a href="#item2" class="panel">2</a> |
+            <a href="#item3" class="panel">3</a> |
+            <a href="#item4" class="panel">4</a> |
+            <a href="#item5" class="panel">5</a>
+        </div>
+
+        <div id="item4" class="item">
+            <a name="item4"></a>
+            <div class="content">item4 <a href="#item1" class="panel">back</a></div>
+        </div>
+
+        <div id="item5" class="item">
+            <a name="item5"></a>
+            <div class="content">item5 <a href="#item1" class="panel">back</a></div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    $('a.panel').click(function () {
+        $('a.panel').removeClass('selected');
+        $(this).addClass('selected');
+
+        current = $(this);
+
+        $('#wrapper').scrollTo($(this).attr('href'), 500);
+
+        return false;
+    });
+    
+    $(window).resize(function () {
+        resizePanel();
+    });
+
+    function resizePanel() {
+        width = $(window).width();
+        height = $(window).height();
+
+        mask_width = width * $('.item').length;
+
+        $('#debug').html(width + ' ' + height + ' ' + mask_width);
+
+        $('#wrapper, .item').css({
+            width: width,
+            height: height
+        });
+        $('#mask').css({
+            width: mask_width,
+            height: height
+        });
+        $('#wrapper').scrollTo($('a.selected').attr('href'), 0);
+
+    }
+
+
+</script>
