@@ -1,31 +1,80 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
 <style>
     .outer {
-
         overflow-x: hidden;
         overflow-y: hidden;
+    }
 
+    .answers {
+        display: flex;
+        justify-content: space-around;
     }
 
     body {
         margin: 0
     }
 
-    .container {
+    .body {
+        /*         background-image: linear-gradient(to right, rgba(255, 0, 0, 0.486) ,rgba(255, 166, 0, 0.671), rgba(255, 255, 0, 0.507), rgba(0, 128, 0, 0.514), rgba(128, 0, 128, 0.493));
+ */
+        padding: 15px;
+        border-radius: 17px;
+        background: rgba(255, 255, 255, 0.534);
+
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    .container1 {
         display: flex;
         transition: transform .4s ease-in;
     }
 
+    .choice {
+        width: 50px;
+        height: 50px;
+    }
+
     .inner {
         flex: 0 0 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background-color: #cccccc;
+        background-size: cover;
+        background-image: url("rainbow-wallpaper.jpg");
     }
 
     .paddle {
-        position: absolute;
-        top: 50px;
-        bottom: 0;
-        height: 20px;
+        position: fixed;
+        top: 50%;
+        font-size: 50px;
+        color: white;
+
+    }
+
+    .btn-warning:hover {
+        color: white
     }
 
     .lefty {
@@ -39,26 +88,21 @@
     }
 </style>
 
-<button class="lefty paddle" id="left-button">Previous</button>
+
+<button class="lefty paddle btn btn-warning" id="left-button"><i class="fa fa-chevron-left"></i></button>
 <div class="outer" id="content">
-    <div class="container">
-        <div class="inner" style="background:red"> Question 1</div>
-        <div class="inner" style="background:green">Question 2</div>
-        <div class="inner" style="background:blue">Question 3</div>
-        <div class="inner" style="background:yellow">Question 4</div>
-        <div class="inner" style="background:orange">Question 5</div>
+    <div id="container1" class="container1">
     </div>
 </div>
-<button class="righty paddle" id="right-button">Next</button>
-
-<p><button id="btnFetch">Click to send a Request</button></p>
-
+<button class="righty paddle btn btn-warning" id="right-button"><i class="fa fa-chevron-right"></i></button>
 <script>
-    const container = document.querySelector(".container");
+    const container = document.querySelector(".container1");
     const lefty = document.querySelector(".lefty");
     let translate = 0;
+    let maxTranslate = null;
 
     lefty.addEventListener("click", function () {
+        if (!maxTranslate) return
         if (translate == 0) {
             translate = 0
             return
@@ -69,23 +113,75 @@
 
     const righty = document.querySelector(".righty");
     righty.addEventListener("click", function () {
-        if (translate == -400) {
-            translate = -400
+        if (!maxTranslate) return
+        if (translate == -maxTranslate) {
+            translate = -maxTranslate
             return
         }
 
         translate -= 100;
         container.style.transform = "translateX(" + translate + "vw" + ")";
     });
-
-    document.getElementById('btnFetch').addEventListener('click', function () {
+    var sendAnswer = function (e) {
+        console.log("questionId", e.target.questionId, "choiceId", e.target.choiceId);
+        $("#right-button").click()
+    }
+    getData = () => {
         $.ajax({
             url: "/getData",
             type: "GET"
         }).done(function (data) {
-            console.log(data);
+            var questions = data.data[1].questions;
+            maxTranslate = (questions.length - 1) * 100
+            questions.forEach(question => {
+                var container = document.createElement("div")
+                container.className = 'inner';
+
+                var body = document.createElement("div");
+                body.style.width = "80%";
+                body.style.margin = "auto"
+                body.className = "body"
+
+
+                var title = document.createElement("h3")
+                title.innerHTML = question.heading.fi;
+                title.style.textAlign = 'center';
+                title.style.marginBottom = '80px';
+                body.appendChild(title);
+
+                var answer = document.createElement("div")
+                answer.className = 'answers'
+                //console.log(question);
+                var choices = question.choices
+                choices.map(item => {
+                    var choice = document.createElement("button")
+                    choice.className = 'btn btn-primary'
+                    choice.innerHTML = item.text.fi;
+                    choice.questionId = question.id;
+                    choice.choiceId = item.id
+                    choice.addEventListener("click", sendAnswer, false)
+                    answer.appendChild(choice)
+                })
+                body.appendChild(answer);
+                container.appendChild(body)
+                //container.appendChild(body)
+                document.getElementById("container1").appendChild(container);
+                //container.append(body)
+
+                /* div.style.width = "100px";
+                div.style.height = "100px";
+                div.style.background = "red";
+                div.style.color = "white";
+                div.innerHTML = "Hello"; 
+
+                */
+            })
+            //console.log(questions);
         });
-    });
+    }
+
+    getData()
+
 
 
 </script>
