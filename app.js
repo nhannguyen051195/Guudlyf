@@ -1,4 +1,6 @@
-const express = require("express")
+'use strict';
+require('dotenv').config();
+const express = require("express");
 const app = express();
 const request = require('request');
 const mongoose = require('mongoose');
@@ -23,13 +25,13 @@ app.set("view engine", "ejs");
 const hostname = '127.0.0.1';
 const port = 3000;
 
-
+console.log(process.env);
 
 // Connect to MongoDB
 mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_HOST}:${process.env.DB_PORT}/admin`, { useNewUrlParser: true }).then(() => {
-    console.log('Connected successfully.');
-    https.createServer(options, app).listen(process.env.APP_PORT);        // Local
-    //app.listen(process.env.APP_PORT);                                       // Jelastic
+    console.log('Connected successfully to database.');
+    //https.createServer(options, app).listen(process.env.APP_PORT);            // Local https
+    app.listen(process.env.APP_PORT);
 }, err => {
     console.log('Connection to db failed :( ' + err);
 });
