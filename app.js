@@ -5,6 +5,10 @@ const app = express();
 const request = require('request');
 const mongoose = require('mongoose');
 
+// Import Routes
+//const postsRoute = require('.routes/posts');
+//app.use('/posts', postsRoute);
+
 
 /* var jsdom = require("jsdom");
 const { JSDOM } = jsdom;
