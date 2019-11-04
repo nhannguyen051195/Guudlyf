@@ -24,11 +24,14 @@ app.use(cors()) */
 //   bodyParser = require("body-parser"),
 //  mongoose = require("mongoose"),
 //   methodOverride = require("method-override");
-app.use(express.static("public"))
+//app.use(express.static("public"))
 app.set('views', './views');
 app.set("view engine", "ejs");
 const hostname = '127.0.0.1';
 const port = 3000;
+
+app.use(express.static(__dirname + '/public'));
+
 
 console.log(process.env);
 

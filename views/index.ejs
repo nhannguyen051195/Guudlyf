@@ -1,10 +1,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+<script src="/mdb.min.js"></script>
+<link href="/mdb.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script> -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
@@ -13,6 +13,9 @@
     crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+
 
 
 
@@ -92,10 +95,13 @@
 <button class="lefty paddle btn btn-warning" id="left-button"><i class="fa fa-chevron-left"></i></button>
 <div class="outer" id="content">
     <div id="container1" class="container1">
+
     </div>
+
 </div>
 <button class="righty paddle btn btn-warning" id="right-button"><i class="fa fa-chevron-right"></i></button>
 <script>
+
     const container = document.querySelector(".container1");
     const lefty = document.querySelector(".lefty");
     let translate = 0;
@@ -134,6 +140,11 @@
             var questions = data.data[1].questions;
             maxTranslate = (questions.length - 1) * 100
             questions.forEach(question => {
+                var question_type = question.question_type
+                console.log(question);
+
+
+
                 var container = document.createElement("div")
                 container.className = 'inner';
 
@@ -152,16 +163,35 @@
                 var answer = document.createElement("div")
                 answer.className = 'answers'
                 //console.log(question);
-                var choices = question.choices
-                choices.map(item => {
-                    var choice = document.createElement("button")
-                    choice.className = 'btn btn-primary'
-                    choice.innerHTML = item.text.fi;
-                    choice.questionId = question.id;
-                    choice.choiceId = item.id
-                    choice.addEventListener("click", sendAnswer, false)
-                    answer.appendChild(choice)
-                })
+                if (question_type == "Word") {
+                    var choices = question.choices
+                    choices.map(item => {
+                        var choice = document.createElement("button")
+                        choice.className = 'btn btn-primary'
+                        choice.innerHTML = item.text.fi;
+                        choice.questionId = question.id;
+                        choice.choiceId = item.id
+                        choice.addEventListener("click", sendAnswer, false)
+                        answer.appendChild(choice)
+                    })
+                }
+                else if (question_type == "Slider") {
+                    var slider = document.createElement("div");
+                    slider.id = "slider-" + question.id;
+                    setTimeout(() => {
+                        $("#" + slider.id).slider();
+
+                    }, 0);
+                    answer.appendChild(slider)
+
+
+
+
+                }
+
+
+
+
                 body.appendChild(answer);
                 container.appendChild(body)
                 //container.appendChild(body)
@@ -175,12 +205,15 @@
                 div.innerHTML = "Hello"; 
 
                 */
+
             })
             //console.log(questions);
         });
     }
 
+
     getData()
+
 
 
 
