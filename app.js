@@ -17,6 +17,7 @@ const { document } = (new JSDOM('')).window;
 global.document = document;
 var cors = require('cors')
 
+
 app.use(cors()) */
 
 //var $ = jQuery = require('jquery')(window);
