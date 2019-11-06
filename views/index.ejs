@@ -88,10 +88,321 @@
         right: 0;
         z-index: 1;
     }
+
+    .button {
+        width: 200px;
+        background-color: #2AB7CA;
+        border: #2AB7CA;
+        color: white;
+        height: 50px !important;
+        border-radius: 50px;
+    }
+
+    .wave1 {
+        position: absolute;
+        height: 100px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background-repeat: repeat-x;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAmAAAABaCAIAAACQd31lAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDFDRjM1Q0M5NTBGMTFFNDlBODdEMzY3RkIwNDAyQjUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDFDRjM1Q0Q5NTBGMTFFNDlBODdEMzY3RkIwNDAyQjUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0MUNGMzVDQTk1MEYxMUU0OUE4N0QzNjdGQjA0MDJCNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0MUNGMzVDQjk1MEYxMUU0OUE4N0QzNjdGQjA0MDJCNSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqFfIEkAABzRSURBVHja7J3ZkhzH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');
+
+    }
+
+    .group {
+        border: 1px solid #979797;
+        width: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 150px;
+        border-radius: 25px;
+        color: #2AB7CA;
+        background-color: #F4F4F8;
+        cursor: pointer;
+    }
+
+    ::-webkit-input-placeholder {
+        /* Edge */
+        color: #2AB7CA;
+    }
+
+    :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: #2AB7CA;
+    }
+
+    ::placeholder {
+        color: #2AB7CA;
+    }
+
+    .setting-row {
+        width: 100%;
+        display: flex;
+        margin: 10px;
+    }
+
+    .setting-item {
+        width: 50%;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 94px;
+        height: 40px;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 32px;
+        width: 32px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked+.slider {
+        background-color: #2AB7CA;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2AB7CA;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(56px);
+        -ms-transform: translateX(56px);
+        transform: translateX(56px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
 </style>
+<div class="outer">
+    <div class="container1">
+        <div style="height: 100vh;flex: 0 0 100%;">
+            <div style="display: flex; justify-content:center; height: 25vh;">
+                <div style="width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
+                    <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                    <div
+                        style="position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div
+                style="display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
+                <h1>Tervetuloa!</h1>
+                <h4>Vastaamalla kyselyyn autat meitä parantamaan viihtyvyyttä rakennuksen sisällä!</h4>
+
+            </div>
+            <div style="display: flex;justify-content: center;height: 25vh;flex-direction: column;align-items: center;">
+                <button class='btn button'>Aloita kysely</button> <button class='btn button'>Anna avoin palaute</button>
+            </div>
+            <div class="wave" style="position: relative;height:25vh;">
+                <svg viewBox="0 -20 700 110" width="100%" height="100%" preserveAspectRatio="none">
+                    <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700"
+                        fill="#2AB7CA"></path>
+                    <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#2AB7CA"></path>
+                </svg>
+                <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: white;">Guudlyf</h5>
+
+            </div>
+
+        </div>
+        <div style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
+            <div style="height: 25vh; ">
+                <div
+                    style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
+                    <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                    <div
+                        style="position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content:center; height: 25vh;">
+                <div
+                    style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 50px;color: #2AB7CA;font-size: 40px;">
+                    Oletko oppilas vai
+                    henkilökuntaa?</div>
+            </div>
+            <div style="display: flex; justify-content:center; height: 25vh; align-items: center;">
+                <div style="height: 100px;display: flex;width: 350px;justify-content: space-between;">
+                    <div class="group"><img style="width: 50px; " src="icons8-children-64.png"> Oppilas
+                    </div>
+                    <div class="group"><img style="width: 60px; " src="icons8-teacher-100.png">Henkilökunta
+                    </div>
+                </div>
+
+            </div>
+            <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
+                <div style="height: 100px;display: flex;width: 50%;justify-content: space-between;">
+                    <button class='btn button'>Edellinen</button>
+                    <button class='btn button'>Seuraava</button>
+
+                </div>
+                <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf</h5>
+
+
+
+            </div>
+
+
+        </div>
+        <div style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
+            <div style="height: 25vh; ">
+                <div
+                    style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
+                    <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                    <div
+                        style="position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content:center; height: 25vh;">
+                <div
+                    style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 40px; height: 60%;">
+                    Kiitos vastauksista! Halutessasi voit jättää alle avoimen palautteen.</div>
+            </div>
+            <div style="display: flex; justify-content:center; height: 25vh;">
+                <textarea
+                    style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 20px;padding: 15px;border: #F4F4F8;"
+                    placeholder="Kouluruoka oli tänään superhyvää!"></textarea>
+            </div>
+            <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
+                <div style="height: 100px;display: flex;width: 50%;justify-content: space-between;">
+                    <button class='btn button'>Edellinen</button>
+                    <button class='btn button'>Seuraava</button>
+
+                </div>
+                <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf</h5>
+
+
+
+            </div>
+
+
+        </div>
+        <div style="height: 100vh;flex: 0 0 100%;">
+            <div style="display: flex; justify-content:center; height: 25vh;">
+                <div style="width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
+                    <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                    <div
+                        style="position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div
+                style="display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
+                <h1>Kiitos!</h1>
+                <h4>Antamalla palautetta autat meitä saavuttamaan mukavan paikan opiskella ja työskennellä.</h4>
+
+            </div>
+            <div style="display: flex;justify-content: center;height: 25vh;flex-direction: column;align-items: center;">
+                <button class='btn button'>Aloita alusta</button>
+            </div>
+            <div class="wave" style="position: relative;height:25vh;">
+                <svg viewBox="0 -20 700 110" width="100%" height="100%" preserveAspectRatio="none">
+                    <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700"
+                        fill="#2AB7CA"></path>
+                    <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#2AB7CA"></path>
+                </svg>
+                <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: white;">Guudlyf</h5>
+
+            </div>
+
+        </div>
+        <div style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
+            <div style="height: 25vh; ">
+                <div
+                    style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;">
+                    <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                    <div
+                        style="position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
+                        X</div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content:center; height: 50vh;">
+                <div
+                    style="display: flex;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 40px;height: 90%;padding: 30px;flex-direction: column;">
+                    <div class="setting-row">
+                        <div class="setting-item">Valitse rakennus</div>
+                        <select style="background-color: white;color: #2AB7CA;border-color: #2AB7CA;"
+                            class="setting-item">
+                            <option> -- Valitse rakennus --</option>
+                        </select>
+
+                    </div>
+                    <div class="setting-row">
+                        <div class="setting-item">Syötä huoneen numero</div>
+                        <input style="background-color: white;color: #2AB7CA;border: #2AB7CA;" class="setting-item">
+
+                    </div>
+                    <div class="setting-row">
+                        <div class="setting-item">Helppokäyttötila</div>
+                        <div class="setting-item" style="    margin: auto;">
+
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
+                <div style="height: 100px;display: flex;justify-content: space-between;">
+                    <button class='btn button'>Tallenna</button>
+
+                </div>
+                <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf</h5>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
 
 
 <button class="lefty paddle btn btn-warning" id="left-button"><i class="fa fa-chevron-left"></i></button>
+
 <div class="outer" id="content">
     <div id="container1" class="container1">
 
@@ -99,6 +410,7 @@
 
 </div>
 <button class="righty paddle btn btn-warning" id="right-button"><i class="fa fa-chevron-right"></i></button>
+
 <script>
 
     const container = document.querySelector(".container1");
@@ -211,7 +523,6 @@
     }
 
 
-    getData()
 
 
 
