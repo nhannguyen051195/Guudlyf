@@ -215,6 +215,46 @@
     .slider.round:before {
         border-radius: 50%;
     }
+
+    .ui-slider-range {
+        background: rgb(42, 183, 202) !important;
+    }
+
+    .ui-slider-handle {
+        border-color: rgb(42, 183, 202) !important;
+        border-radius: 50% !important;
+    }
+    .ui-slider-handle:focus {
+       outline: none;
+    }
+    .ui-slider-handle:active {
+        border-color: rgb(42, 183, 202) !important;
+        background-color: rgb(42, 183, 202) !important;
+
+    }
+
+    .button-answer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: transparent;
+        border-radius: 15px;
+        padding: 5px;
+        height: 95px;
+        width: 80px;
+        cursor: pointer;
+        margin: 10px;
+        color: rgb(42, 183, 202);
+    }
+
+    .button-answer p {
+        font-size: 10px
+    }
+
+    .button-answer img {
+        width: 50px;
+        height: 50px
+    }
 </style>
 <div class="outer">
     <div class="outer">
@@ -482,6 +522,14 @@
 
 
     }
+    function refreshSwatch(e) {
+        let answerId = e.target.id.replace("slider", "answer")
+        document.getElementById(answerId).innerHTML = $("#" + e.target.id).slider("value")
+
+        //  var value = $("#" + sliderid).slider("value")
+        //answerid.innerHTML = value
+
+    }
     getData = () => {
         $.ajax({
             url: "/getData",
@@ -498,6 +546,7 @@
                     body.style.width = "80%";
                     body.style.margin = "auto"
                     body.className = "body" */
+                var question_type = question.question_type
 
                 var mainContainer = document.createElement("div")
                 mainContainer.className = "mainContainer"
@@ -576,7 +625,6 @@
                 part3Container.style.color = '#2AB7CA';
                 part3Container.style.fontSize = '30px';
                 part3Container.style.borderRadius = '50px';
-                part3Container.innerHTML = "Answer here....";
 
                 part3.appendChild(part3Container)
 
@@ -650,27 +698,57 @@
 
                 document.getElementById("container1").appendChild(mainContainer);
 
+                if (question_type == "Word") {
+                    var choices = question.choices
+                    choices.map(item => {
+                        var choice = document.createElement("button")
+                        choice.className = 'button-answer'
+                        choice.questionId = question.id;
+                        choice.choiceId = item.id;
+                        var icon = document.createElement("img");
+                        icon.src = "icons8-happy-100.png";
+
+                        var text = document.createElement("p");
+                        text.innerHTML = item.text.fi.toLowerCase();
+
+                        choice.appendChild(icon);
+                        choice.appendChild(text)
+                        choice.addEventListener("click", sendAnswer, false)
+                        part3Container.appendChild(choice)
+                    })
+                }
+                else if (question_type == "Slider") {
+                    var slider = document.createElement("div");
+                    slider.id = "slider-" + question.id;
+                    slider.style.width = "100%";
+
+                    part2Container.style.flexDirection = 'column'
+
+
+
+                    $("#" + slider.id).slider({
+                        orientation: "horizontal",
+                        range: "min",
+                        value: 5,
+                        min: 0,
+                        max: 10,
+                        slide: refreshSwatch,
+                        change: refreshSwatch,
+
+                    });
+
+
+                    var answer = document.createElement("p");
+                    answer.id = "answer-" + question.id
+                    answer.innerHTML = "5"
+                    answer.style.color = "rgb(42, 183, 202)"
+                    part2Container.appendChild(answer)
+                    part3Container.appendChild(slider)
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                }
 
 
 
@@ -683,31 +761,7 @@
                 var answer = document.createElement("div")
                 answer.className = 'answers'
                 //console.log(question);
-                if (question_type == "Word") {
-                    var choices = question.choices
-                    choices.map(item => {
-                        var choice = document.createElement("button")
-                        choice.className = 'btn btn-primary'
-                        choice.innerHTML = item.text.fi;
-                        choice.questionId = question.id;
-                        choice.choiceId = item.id
-                        choice.addEventListener("click", sendAnswer, false)
-                        answer.appendChild(choice)
-                    })
-                }
-                else if (question_type == "Slider") {
-                    var slider = document.createElement("div");
-                    slider.id = "slider-" + question.id;
-                    setTimeout(() => {
-                        $("#" + slider.id).slider();
-
-                    }, 0);
-                    answer.appendChild(slider)
-
-
-
-
-                }
+             
 
 
 

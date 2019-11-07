@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const request = require('request');
 const mongoose = require('mongoose');
+const path = require('path');
+
 
 // Import Routes
 //const postsRoute = require('.routes/posts');
