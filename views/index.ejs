@@ -15,9 +15,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
 
-
-
-
 <style>
     .outer {
         overflow-x: hidden;
@@ -30,12 +27,12 @@
     }
 
     body {
-        margin: 0
+        margin: 0;
+        overflow: hidden;
     }
 
     .body {
-        /*         background-image: linear-gradient(to right, rgba(255, 0, 0, 0.486) ,rgba(255, 166, 0, 0.671), rgba(255, 255, 0, 0.507), rgba(0, 128, 0, 0.514), rgba(128, 0, 128, 0.493));
- */
+
         padding: 15px;
         border-radius: 17px;
         background: rgba(255, 255, 255, 0.534);
@@ -123,6 +120,12 @@
         cursor: pointer;
     }
 
+    .mainContainer {
+        height: 100vh;
+        flex: 0 0 100%;
+        background-color: #E6E6EA;
+    }
+
     ::-webkit-input-placeholder {
         /* Edge */
         color: #2AB7CA;
@@ -186,6 +189,10 @@
         transition: .4s;
     }
 
+    button:focus {
+        outline: none;
+    }
+
     input:checked+.slider {
         background-color: #2AB7CA;
     }
@@ -210,210 +217,235 @@
     }
 </style>
 <div class="outer">
-    <div class="container1">
-        <div style="height: 100vh;flex: 0 0 100%;">
-            <div style="display: flex; justify-content:center; height: 25vh;">
-                <div style="width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
-                    <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+    <div class="outer">
+        <div class="container1" id="container2">
+            <div id="welcome" style="height: 100vh;flex: 0 0 100%;">
+                <div style="display: flex; justify-content:center; height: 25vh;">
+                    <div style="width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
+                        <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                        <button onclick="goTo('setting','welcome')"
+                            style="border: 0px;position: absolute;    background-color: transparent;
+                            right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <div
+                    style="display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
+                    <h1>Tervetuloa!</h1>
+                    <h4>Vastaamalla kyselyyn autat meitä parantamaan viihtyvyyttä rakennuksen sisällä!</h4>
+
+                </div>
+                <div
+                    style="display: flex;justify-content: center;height: 25vh;flex-direction: column;align-items: center;">
+                    <button onclick="goTo('who',null)" class='btn button'>Aloita kysely</button> <button
+                        onclick="goTo('feedback',null)" class='btn button'>Anna avoin palaute</button>
+                </div>
+                <div class="wave" style="position: relative;height:25vh;">
+                    <svg viewBox="0 -20 700 110" width="100%" height="100%" preserveAspectRatio="none">
+                        <path transform="translate(0, -20)"
+                            d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700" fill="#2AB7CA"></path>
+                        <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#2AB7CA"></path>
+                    </svg>
+                    <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: white;">Guudlyf 2019</h5>
+                </div>
+            </div>
+
+
+            <div id="setting" style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
+                <div style="height: 25vh; ">
                     <div
-                        style="position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
+                        style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;">
+                        <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                        <button onclick="goBackTo()"
+                            style="    background-color: transparent; border:0px;
+                            position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
+                            X</button>
                     </div>
                 </div>
-            </div>
-            <div
-                style="display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
-                <h1>Tervetuloa!</h1>
-                <h4>Vastaamalla kyselyyn autat meitä parantamaan viihtyvyyttä rakennuksen sisällä!</h4>
-
-            </div>
-            <div style="display: flex;justify-content: center;height: 25vh;flex-direction: column;align-items: center;">
-                <button class='btn button'>Aloita kysely</button> <button class='btn button'>Anna avoin palaute</button>
-            </div>
-            <div class="wave" style="position: relative;height:25vh;">
-                <svg viewBox="0 -20 700 110" width="100%" height="100%" preserveAspectRatio="none">
-                    <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700"
-                        fill="#2AB7CA"></path>
-                    <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#2AB7CA"></path>
-                </svg>
-                <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: white;">Guudlyf</h5>
-
-            </div>
-
-        </div>
-        <div style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
-            <div style="height: 25vh; ">
-                <div
-                    style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
-                    <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                <div style="display: flex; justify-content:center; height: 50vh;">
                     <div
-                        style="position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-            <div style="display: flex; justify-content:center; height: 25vh;">
-                <div
-                    style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 50px;color: #2AB7CA;font-size: 40px;">
-                    Oletko oppilas vai
-                    henkilökuntaa?</div>
-            </div>
-            <div style="display: flex; justify-content:center; height: 25vh; align-items: center;">
-                <div style="height: 100px;display: flex;width: 350px;justify-content: space-between;">
-                    <div class="group"><img style="width: 50px; " src="icons8-children-64.png"> Oppilas
-                    </div>
-                    <div class="group"><img style="width: 60px; " src="icons8-teacher-100.png">Henkilökunta
-                    </div>
-                </div>
+                        style="display: flex;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 30px;height: 90%;padding: 30px;flex-direction: column;">
+                        <div class="setting-row">
+                            <div class="setting-item">Valitse rakennus</div>
+                            <select style="background-color: white;color: #2AB7CA;border-color: #2AB7CA;"
+                                class="setting-item">
+                                <option value="0"> -- Valitse rakennus --</option>
+                                <option value="1">Kaisaniemen ala-aste</option>
+                                <option value="2">Keinutien ala-aste</option>
+                                <option value="3">Myllypuron peruskoulu</option>
+                                <option value="4">Meritalo</option>
+                            </select>
 
-            </div>
-            <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
-                <div style="height: 100px;display: flex;width: 50%;justify-content: space-between;">
-                    <button class='btn button'>Edellinen</button>
-                    <button class='btn button'>Seuraava</button>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-item">Syötä huoneen numero</div>
+                            <input style="background-color: white;color: #2AB7CA;border: #2AB7CA;" class="setting-item">
 
-                </div>
-                <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf</h5>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-item">Helppokäyttötila</div>
+                            <div class="setting-item" style="    margin: auto;">
 
-
-
-            </div>
-
-
-        </div>
-        <div style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
-            <div style="height: 25vh; ">
-                <div
-                    style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
-                    <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
-                    <div
-                        style="position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-            <div style="display: flex; justify-content:center; height: 25vh;">
-                <div
-                    style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 40px; height: 60%;">
-                    Kiitos vastauksista! Halutessasi voit jättää alle avoimen palautteen.</div>
-            </div>
-            <div style="display: flex; justify-content:center; height: 25vh;">
-                <textarea
-                    style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 20px;padding: 15px;border: #F4F4F8;"
-                    placeholder="Kouluruoka oli tänään superhyvää!"></textarea>
-            </div>
-            <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
-                <div style="height: 100px;display: flex;width: 50%;justify-content: space-between;">
-                    <button class='btn button'>Edellinen</button>
-                    <button class='btn button'>Seuraava</button>
-
-                </div>
-                <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf</h5>
-
-
-
-            </div>
-
-
-        </div>
-        <div style="height: 100vh;flex: 0 0 100%;">
-            <div style="display: flex; justify-content:center; height: 25vh;">
-                <div style="width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
-                    <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
-                    <div
-                        style="position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
-                        <i class="fa fa-cog" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-            <div
-                style="display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
-                <h1>Kiitos!</h1>
-                <h4>Antamalla palautetta autat meitä saavuttamaan mukavan paikan opiskella ja työskennellä.</h4>
-
-            </div>
-            <div style="display: flex;justify-content: center;height: 25vh;flex-direction: column;align-items: center;">
-                <button class='btn button'>Aloita alusta</button>
-            </div>
-            <div class="wave" style="position: relative;height:25vh;">
-                <svg viewBox="0 -20 700 110" width="100%" height="100%" preserveAspectRatio="none">
-                    <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700"
-                        fill="#2AB7CA"></path>
-                    <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#2AB7CA"></path>
-                </svg>
-                <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: white;">Guudlyf</h5>
-
-            </div>
-
-        </div>
-        <div style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
-            <div style="height: 25vh; ">
-                <div
-                    style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;">
-                    <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
-                    <div
-                        style="position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
-                        X</div>
-                </div>
-            </div>
-            <div style="display: flex; justify-content:center; height: 50vh;">
-                <div
-                    style="display: flex;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 40px;height: 90%;padding: 30px;flex-direction: column;">
-                    <div class="setting-row">
-                        <div class="setting-item">Valitse rakennus</div>
-                        <select style="background-color: white;color: #2AB7CA;border-color: #2AB7CA;"
-                            class="setting-item">
-                            <option> -- Valitse rakennus --</option>
-                        </select>
-
-                    </div>
-                    <div class="setting-row">
-                        <div class="setting-item">Syötä huoneen numero</div>
-                        <input style="background-color: white;color: #2AB7CA;border: #2AB7CA;" class="setting-item">
-
-                    </div>
-                    <div class="setting-row">
-                        <div class="setting-item">Helppokäyttötila</div>
-                        <div class="setting-item" style="    margin: auto;">
-
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider round"></span>
-                            </label>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
+                    <div style="height: 100px;display: flex;justify-content: space-between;">
+                        <button class='btn button'>Tallenna</button>
+
+                    </div>
+                    <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
+                    </h5>
+                </div>
             </div>
 
-            <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
-                <div style="height: 100px;display: flex;justify-content: space-between;">
-                    <button class='btn button'>Tallenna</button>
+            <div id='who' style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
+                <div style="height: 25vh;">
+                    <div
+                        style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
+                        <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                        <button onclick="goTo('setting','who')"
+                            style="    background-color: transparent;                        border:0px;position: absolute;right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content:center; height: 25vh;">
+                    <div
+                        style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 50px;color: #2AB7CA;font-size: 30px;">
+                        Oletko oppilas vai
+                        henkilökuntaa?</div>
+                </div>
+                <div style="display: flex; justify-content:center; height: 25vh; align-items: center;">
+                    <div style="height: 100px;display: flex;width: 350px;justify-content: space-between;">
+                        <button onclick="startServey()" class="group"><img style="width: 50px; "
+                                src="icons8-children-64.png"> Oppilas
+                        </button>
+                        <button onclick="startServey()" class="group"><img style="width: 60px; "
+                                src="icons8-teacher-100.png">Henkilökunta
+                        </button>
+                    </div>
 
                 </div>
-                <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf</h5>
+                <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
+                    <div style="height: 100px;display: flex;width: 50%;justify-content: space-between;">
+                        <button onclick="goTo('welcome',null)" class='btn button'>Edellinen</button>
+                        <button class='btn button'>Seuraava</button>
+
+                    </div>
+                    <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
+                    </h5>
+                </div>
             </div>
+
+
+            <div id='feedback' style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
+                <div style="height: 25vh; ">
+                    <div
+                        style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
+                        <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                        <button onclick="goTo('setting', 'feedback')"
+                            style="border:0;position: absolute;    background-color: transparent;
+                            right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content:center; height: 25vh;">
+                    <div
+                        style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 30px; height: 60%;">
+                        Kiitos vastauksista! Halutessasi voit jättää alle avoimen palautteen.</div>
+                </div>
+                <div style="display: flex; justify-content:center; height: 25vh;">
+                    <textarea
+                        style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 20px;padding: 15px;border: #F4F4F8;"
+                        placeholder="Kouluruoka oli tänään superhyvää!"></textarea>
+                </div>
+                <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
+                    <div style="height: 100px;display: flex;width: 50%;justify-content: space-between;">
+                        <button onclick="goTo('welcome',null)" class='btn button'>Edellinen</button>
+                        <button class='btn button'>Seuraava</button>
+
+                    </div>
+                    <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
+                    </h5>
+                </div>
+
+
+            </div>
+            <div id='thankyou' style="height: 100vh;flex: 0 0 100%;">
+                <div style="display: flex; justify-content:center; height: 25vh;">
+                    <div style="width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
+                        <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+
+                    </div>
+                </div>
+                <div
+                    style="display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
+                    <h1>Kiitos!</h1>
+                    <h4>Antamalla palautetta autat meitä saavuttamaan mukavan paikan opiskella ja työskennellä.</h4>
+
+                </div>
+                <div
+                    style="display: flex;justify-content: center;height: 25vh;flex-direction: column;align-items: center;">
+                    <button onclick="goTo('welcome',null)" class='btn button'>Aloita alusta</button>
+                </div>
+                <div class="wave" style="position: relative;height:25vh;">
+                    <svg viewBox="0 -20 700 110" width="100%" height="100%" preserveAspectRatio="none">
+                        <path transform="translate(0, -20)"
+                            d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700" fill="#2AB7CA"></path>
+                        <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#2AB7CA"></path>
+                    </svg>
+                    <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: white;">Guudlyf 2019</h5>
+
+                </div>
+
+            </div>
+
         </div>
+
+
+
     </div>
 
 
 
-</div>
 
+    <div class="outer" id="content">
+        <div id="container1" class="container1">
 
-
-<button class="lefty paddle btn btn-warning" id="left-button"><i class="fa fa-chevron-left"></i></button>
-
-<div class="outer" id="content">
-    <div id="container1" class="container1">
+        </div>
 
     </div>
-
 </div>
-<button class="righty paddle btn btn-warning" id="right-button"><i class="fa fa-chevron-right"></i></button>
+
+<button style="display: none;" class="lefty paddle btn btn-warning" id="left-button"><i
+        class="fa fa-chevron-left"></i></button>
+
+
+<button style="display: none;" class="righty paddle btn btn-warning" id="right-button"><i
+        class="fa fa-chevron-right"></i></button>
 
 <script>
+    let prev = null
+    goTo = (id, prevId) => {
+        $('#' + id)[0].scrollIntoView(true);
+        prev = prevId
+    }
+    goBackTo = () => {
+        if (prev)
+            $('#' + prev)[0].scrollIntoView(true);
 
-    const container = document.querySelector(".container1");
+    }
+
+    const container = document.querySelector("#container1");
     const lefty = document.querySelector(".lefty");
     let translate = 0;
     let maxTranslate = null;
@@ -443,6 +475,12 @@
         console.log("questionId", e.target.questionId, "choiceId", e.target.choiceId);
         $("#right-button").click()
     }
+    startServey = () => {
+        $(document).scrollTo('#content');
+        getData()
+
+
+    }
     getData = () => {
         $.ajax({
             url: "/getData",
@@ -450,22 +488,190 @@
         }).done(function (data) {
             var questions = data.data[1].questions;
             maxTranslate = (questions.length - 1) * 100
-            questions.forEach(question => {
-                var question_type = question.question_type
-                console.log(question);
+            questions.forEach((question, index) => {
+                /*     var question_type = question.question_type
+                    var container = document.createElement("div")
+                    container.className = 'inner';
+    
+                    var body = document.createElement("div");
+                    body.style.width = "80%";
+                    body.style.margin = "auto"
+                    body.className = "body" */
+
+                var mainContainer = document.createElement("div")
+                mainContainer.className = "mainContainer"
+                mainContainer.id = "mainContainer" + question.id
 
 
 
-                var container = document.createElement("div")
-                container.className = 'inner';
+                var part1 = document.createElement("div")
+                part1.style.height = "25vh";
+                var part1Container = document.createElement("div");
+                part1Container.style.backgroundColor = '#F4F4F8';
+                part1Container.style.width = '100%';
+                part1Container.style.display = 'flex';
+                part1Container.style.justifyContent = 'center';
+                part1Container.style.position = 'relative';
+                part1Container.style.height = '100px';
 
-                var body = document.createElement("div");
-                body.style.width = "80%";
-                body.style.margin = "auto"
-                body.className = "body"
+                var part1Img = document.createElement('img');
+                part1Img.style.height = '100px'
+                part1Img.src = 'HELSINKI_Tunnus_MUSTA.png'
+
+                var part1Btn = document.createElement("button")
+                part1Btn.style.backgroundColor = 'transparent'
+                part1Btn.style.border = '0'
+                part1Btn.style.position = 'absolute';
+                part1Btn.style.right = '10px';
+                part1Btn.style.height = '100%';
+                part1Btn.style.fontSize = '30px';
+
+                part1Btn.addEventListener("click", function () {
+                    goTo('setting', 'who')
+                })
+
+                var part1Icon = document.createElement("i")
+                part1Icon.className = "fa fa-cog"
+
+                part1Btn.appendChild(part1Icon)
+                part1Container.appendChild(part1Img)
+               // part1Container.appendChild(part1Btn)
+                part1.appendChild(part1Container)
 
 
-                var title = document.createElement("h3")
+                var part2 = document.createElement("div")
+                part2.style.display = 'flex';
+                part2.style.justifyContent = 'center';
+                part2.style.height = '25vh';
+
+
+
+                var part2Container = document.createElement("div")
+                part2Container.style.backgroundColor = '#F4F4F8';
+                part2Container.style.width = '80%';
+                part2Container.style.display = 'flex';
+                part2Container.style.justifyContent = 'center';
+                part2Container.style.alignItems = 'center';
+                part2Container.style.color = '#2AB7CA';
+                part2Container.style.fontSize = '30px';
+                part2Container.style.borderRadius = '50px';
+                part2Container.innerHTML = question.heading.fi;
+
+                part2.appendChild(part2Container)
+
+
+                var part3 = document.createElement("div")
+                part3.style.display = 'flex';
+                part3.style.justifyContent = 'center';
+                part3.style.height = '25vh';
+                part3.style.alignItems = 'center';
+
+                var part3Container = document.createElement("div")
+                part3Container.style.backgroundColor = '#F4F4F8';
+                part3Container.style.width = '80%';
+                part3Container.style.display = 'flex';
+                part3Container.style.justifyContent = 'center';
+                part3Container.style.alignItems = 'center';
+                part3Container.style.color = '#2AB7CA';
+                part3Container.style.fontSize = '30px';
+                part3Container.style.borderRadius = '50px';
+                part3Container.innerHTML = "Answer here....";
+
+                part3.appendChild(part3Container)
+
+
+                var part4 = document.createElement("div")
+                part4.style.display = 'flex';
+                part4.style.justifyContent = 'center';
+                part4.style.height = '25vh';
+                part4.style.alignItems = 'center';
+
+                var part4Container = document.createElement("div")
+                part4Container.style.width = '50%';
+                part4Container.style.display = 'flex';
+                part4Container.style.justifyContent = 'space-between';
+                part4Container.style.alignItems = 'center';
+
+                part4Container.style.height = '100px';
+
+                var part4btn1 = document.createElement("button")
+                part4btn1.className = "btn button";
+                part4btn1.innerHTML = "Edellinen"
+                part4btn1.addEventListener("click", function () {
+                    if (index == 0) {
+                        goTo("who", null)
+                    }
+                    else {
+                        $("#left-button").click()
+
+                    }
+
+                })
+                var part4span = document.createElement("span")
+                part4span.innerHTML = index + 1 + "/8"
+
+                var part4btn2 = document.createElement("button")
+                part4btn2.className = "btn button";
+                part4btn2.innerHTML = "Seuraava"
+                part4btn2.addEventListener("click", function () {
+
+                    if (index == 7) {
+                        goTo("thankyou", null)
+                    }
+                    else {
+                        $("#right-button").click()
+
+                    }
+                })
+
+                part4Container.appendChild(part4btn1)
+                part4Container.appendChild(part4span)
+
+                part4Container.appendChild(part4btn2)
+
+                var h5 = document.createElement("h5")
+                h5.innerHTML = "Guudlyf 2019";
+                h5.style.position = 'fixed';
+                h5.style.bottom = '0';
+                h5.style.width = '100%';
+                h5.style.textAlign = 'center';
+                h5.style.color = '#BBBBBB';
+
+                part4.appendChild(part4Container)
+                part4.appendChild(h5)
+
+                mainContainer.appendChild(part1)
+                mainContainer.appendChild(part2)
+                mainContainer.appendChild(part3)
+                mainContainer.appendChild(part4)
+
+                document.getElementById("container1").appendChild(mainContainer);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                /* var title = document.createElement("h3")
                 title.innerHTML = question.heading.fi;
                 title.style.textAlign = 'center';
                 title.style.marginBottom = '80px';
@@ -506,7 +712,7 @@
                 body.appendChild(answer);
                 container.appendChild(body)
                 //container.appendChild(body)
-                document.getElementById("container1").appendChild(container);
+                document.getElementById("container1").appendChild(container); */
                 //container.append(body)
 
                 /* div.style.width = "100px";
@@ -514,7 +720,7 @@
                 div.style.background = "red";
                 div.style.color = "white";
                 div.innerHTML = "Hello"; 
-
+ 
                 */
 
             })
