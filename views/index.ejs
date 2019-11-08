@@ -224,9 +224,11 @@
         border-color: rgb(42, 183, 202) !important;
         border-radius: 50% !important;
     }
+
     .ui-slider-handle:focus {
-       outline: none;
+        outline: none;
     }
+
     .ui-slider-handle:active {
         border-color: rgb(42, 183, 202) !important;
         background-color: rgb(42, 183, 202) !important;
@@ -338,7 +340,7 @@
 
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
                     <div style="height: 100px;display: flex;justify-content: space-between;">
-                        <button class='btn button'>Tallenna</button>
+                        <button onclick="goBackTo()"  class='btn button'>Tallenna</button>
 
                     </div>
                     <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
@@ -378,7 +380,7 @@
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
                     <div style="height: 100px;display: flex;width: 50%;justify-content: space-between;">
                         <button onclick="goTo('welcome',null)" class='btn button'>Edellinen</button>
-                        <button class='btn button'>Seuraava</button>
+                        <button  class='btn button'>Seuraava</button>
 
                     </div>
                     <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
@@ -412,7 +414,7 @@
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
                     <div style="height: 100px;display: flex;width: 50%;justify-content: space-between;">
                         <button onclick="goTo('welcome',null)" class='btn button'>Edellinen</button>
-                        <button class='btn button'>Seuraava</button>
+                        <button onclick="goTo('thankyou', null)" class='btn button'>Seuraava</button>
 
                     </div>
                     <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
@@ -517,8 +519,9 @@
         $("#right-button").click()
     }
     startServey = () => {
-        $(document).scrollTo('#content');
+        $("#container1").empty()
         getData()
+
 
 
     }
@@ -535,17 +538,17 @@
             url: "/getData",
             type: "GET"
         }).done(function (data) {
+
+
+            container.style.transform = "translateX(" + 0 + "vw" + ")";
+            translate = 0;
+            maxTranslate = null
+
+
             var questions = data.data[1].questions;
             maxTranslate = (questions.length - 1) * 100
             questions.forEach((question, index) => {
-                /*     var question_type = question.question_type
-                    var container = document.createElement("div")
-                    container.className = 'inner';
-    
-                    var body = document.createElement("div");
-                    body.style.width = "80%";
-                    body.style.margin = "auto"
-                    body.className = "body" */
+
                 var question_type = question.question_type
 
                 var mainContainer = document.createElement("div")
@@ -585,7 +588,6 @@
 
                 part1Btn.appendChild(part1Icon)
                 part1Container.appendChild(part1Img)
-                // part1Container.appendChild(part1Btn)
                 part1.appendChild(part1Container)
 
 
@@ -723,18 +725,19 @@
 
                     part2Container.style.flexDirection = 'column'
 
+                    setTimeout(() => {
+                        $("#" + slider.id).slider({
+                            orientation: "horizontal",
+                            range: "min",
+                            value: 5,
+                            min: 0,
+                            max: 10,
+                            slide: refreshSwatch,
+                            change: refreshSwatch,
 
+                        });
+                    }, 500);
 
-                    $("#" + slider.id).slider({
-                        orientation: "horizontal",
-                        range: "min",
-                        value: 5,
-                        min: 0,
-                        max: 10,
-                        slide: refreshSwatch,
-                        change: refreshSwatch,
-
-                    });
 
 
                     var answer = document.createElement("p");
@@ -751,36 +754,11 @@
 
 
 
-                /* var title = document.createElement("h3")
-                title.innerHTML = question.heading.fi;
-                title.style.textAlign = 'center';
-                title.style.marginBottom = '80px';
-                body.appendChild(title);
 
-                var answer = document.createElement("div")
-                answer.className = 'answers'
-                //console.log(question);
-             
-
-
-
-
-                body.appendChild(answer);
-                container.appendChild(body)
-                //container.appendChild(body)
-                document.getElementById("container1").appendChild(container); */
-                //container.append(body)
-
-                /* div.style.width = "100px";
-                div.style.height = "100px";
-                div.style.background = "red";
-                div.style.color = "white";
-                div.innerHTML = "Hello"; 
- 
-                */
 
             })
-            //console.log(questions);
+            $(document).scrollTo('#content');
+
         });
     }
 
