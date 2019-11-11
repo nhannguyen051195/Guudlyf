@@ -38,7 +38,7 @@ app.use(express.static(__dirname + '/public'));
 
 console.log(process.env);
 
-// Connect to MongoDB
+// Connect to MongoDB-------------------------------------------------------------------------------------------------------------------------------------------------
 mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_HOST}:${process.env.DB_PORT}/admin`, { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to MongoDB.');
     //https.createServer(options, app).listen(process.env.APP_PORT);            // Local https
@@ -46,6 +46,7 @@ mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${proce
 }, err => {
     console.log('Connection to MongoDB failed :( ' + err);
 });
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 app.get("/", function (req, res) {
     res.render("index");
