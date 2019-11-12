@@ -535,6 +535,7 @@
     }
     startServey = () => {
         $("#container1").empty()
+        $("#who").hide()
         getData()
 
 
@@ -686,6 +687,8 @@
 
                     if (index == 7) {
                         goTo("thankyou", null)
+                        $("#who").show()
+
                     }
                     else {
                         $("#right-button").click()
