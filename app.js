@@ -73,7 +73,5 @@ var options = {
 
 request(options, callback);
 
-app.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
+app.listen(process.env.PORT || port)
 
