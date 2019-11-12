@@ -417,7 +417,7 @@
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh;">
                     <div
-                        style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 30px; height: 60%;">
+                        style="text-align:center;display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 30px; height: 60%;">
                         Kiitos vastauksista! Halutessasi voit jättää alle avoimen palautteen.</div>
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh;">
@@ -686,8 +686,9 @@
                 part4btn2.addEventListener("click", function () {
 
                     if (index == 7) {
-                        goTo("thankyou", null)
                         $("#container2").show()
+
+                        goTo("thankyou", null)
 
                     }
                     else {
