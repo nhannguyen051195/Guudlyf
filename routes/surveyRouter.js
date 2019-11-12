@@ -4,7 +4,6 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const surveyController = require('../controllers/surveyController');
-const methodOverride = require('method-override');
 const surveyModel = require('../models/surveyModel');
 
 

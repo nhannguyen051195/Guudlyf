@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 // Creating a survey schema and model
 const surveySchema = new Schema({
     schoolname: {type: String, enum: ['Kaisaniemen ala-aste', 'Meritalo', 'Keinutien ala-aste', 'Myllypuron peruskoulu']},
-    schoolclass: typeof Number,
+    schoolclass: Number,
     indoorTemperature: String,
     indoorFreshness: String,
     indoorMoisture: String,
@@ -14,7 +14,7 @@ const surveySchema = new Schema({
     indoorLightning: String,
     inDoorAcoustic: String,
     indoorWork: String,
-    description: String
+    description: [{body: String, date: Date}]
 });
 
 module.exports = mongoose.model('survey', surveySchema);
