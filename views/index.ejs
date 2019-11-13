@@ -115,6 +115,17 @@
         border-radius: 50px;
     }
 
+    .button2 {
+        width: 195px;
+        background-color: "white";
+        border: "white";
+        color: #2AB7CA;
+        height: 50px !important;
+        border-radius: 50px;
+        font-weight: 600;
+
+    }
+
     .wave1 {
         position: absolute;
         height: 100px;
@@ -263,7 +274,7 @@
         background-color: transparent;
         border-radius: 15px;
         padding: 5px;
-        width: 90px;
+        width: 100px;
         cursor: pointer;
         margin: 5px;
         color: rgb(42, 183, 202);
@@ -284,7 +295,7 @@
             <div id="welcome" style="height: 100vh;flex: 0 0 100%;">
                 <div style="display: flex; justify-content:center; height: 25vh;">
                     <div style="width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
-                        <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                        <img style="" src="HELSINKI_Tunnus_MUSTA.png" alt="">
                         <button onclick="goTo('setting','welcome')"
                             style="border: 0px;position: absolute;    background-color: transparent;
                             right: 10px;height: 100%;font-size: 30px;display: flex;align-items: center; cursor: pointer;">
@@ -293,7 +304,7 @@
                     </div>
                 </div>
                 <div
-                    style="text-align: center;display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
+                    style="padding:15px;text-align: center;display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
                     <h2>Tervetuloa!!!</h2>
                     <h5>Vastaamalla kyselyyn autat meitä parantamaan viihtyvyyttä rakennuksen sisällä!</h4>
 
@@ -388,10 +399,10 @@
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center;">
                     <div style="height: 100px;display: flex;width: 350px;justify-content: space-between;">
-                        <button onclick="startServey()" class="group"><img style="width: 50px; "
+                        <button onclick="highlight(this)" class="group"><img style="width: 50px; "
                                 src="icons8-children-64.png"> Oppilas
                         </button>
-                        <button onclick="startServey()" class="group"><img style="width: 60px; "
+                        <button onclick="highlight(this)" class="group"><img style="width: 60px; "
                                 src="icons8-teacher-100.png">Henkilökunta
                         </button>
                     </div>
@@ -400,7 +411,8 @@
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
                     <div style="height: 100px;display: flex;;justify-content: space-between;">
                         <button onclick="goTo('welcome',null)" class='btn button'>Edellinen</button>
-                        <button class='btn button'>Seuraava</button>
+                        <button disabled id="startsurvey" style="background-color: white;color: #2AB7CA"
+                            onclick="startServey()" class='btn button'>Seuraava</button>
 
                     </div>
                     <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
@@ -423,19 +435,20 @@
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh;">
                     <div
-                        style="text-align:center;display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 30px; height: 60%;">
+                        style="    padding: 15px;
+                        text-align:center;display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 30px; height: 60%;">
                         <h5>Kiitos vastauksista! Halutessasi voit jättää alle avoimen palautteen.</h5>
                     </div>
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh;">
-                    <textarea
+                    <textarea id="feedback"
                         style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 20px;padding: 15px;border: #F4F4F8;"
                         placeholder="Kouluruoka oli tänään superhyvää!"></textarea>
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
                     <div style="height: 100px;display: flex;width: 50%;justify-content: space-between;">
                         <button onclick="goTo('welcome',null)" class='btn button'>Edellinen</button>
-                        <button onclick="goTo('thankyou', null)" class='btn button'>Seuraava</button>
+                        <button onclick="sendFeedback()" class='btn button'>Lähetä</button>
 
                     </div>
                     <h5 style="position: fixed;bottom: 0;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
@@ -447,19 +460,20 @@
             <div id='thankyou' style="height: 100vh;flex: 0 0 100%;">
                 <div style="display: flex; justify-content:center; height: 25vh;">
                     <div style="width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
-                        <img style="height: 100px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                        <img style="" src="HELSINKI_Tunnus_MUSTA.png" alt="">
 
                     </div>
                 </div>
                 <div
-                    style="text-align:center;display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
+                    style="padding:15px;text-align:center;display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
                     <h1>Kiitos!</h1>
                     <h5>Antamalla palautetta autat meitä saavuttamaan mukavan paikan opiskella ja työskennellä.</h5>
-
                 </div>
                 <div
                     style="display: flex;justify-content: center;height: 25vh;flex-direction: column;align-items: center;">
                     <button onclick="goTo('welcome',null)" class='btn button'>Aloita alusta</button>
+                    <button onclick="goTo('feedback',null)" class="btn button waves-effect waves-light">Anna avoin
+                        palaute</button>
                 </div>
                 <div class="wave" style="position: relative;height:25vh;">
                     <svg viewBox="0 -20 700 110" width="100%" height="100%" preserveAspectRatio="none">
@@ -499,8 +513,10 @@
         class="fa fa-chevron-right"></i></button>
 
 <script>
-console.log(data);
-    
+    sendFeedback = () => {
+        console.log($("textarea#feedback").val());
+        goTo('thankyou', null)
+    }
     let prev = null
     goTo = (id, prevId) => {
         $('#' + id)[0].scrollIntoView(true);
@@ -509,6 +525,13 @@ console.log(data);
     goBackTo = () => {
         if (prev)
             $('#' + prev)[0].scrollIntoView(true);
+
+    }
+    highlight = (e) => {
+        $('.group').css({ "background-color": "white", "color": "#2AB7CA" })
+        $(e).css({ "background-color": "#2AB7CA", "color": "white" })
+        $("#startsurvey").prop("disabled", false)
+        $("#startsurvey").css({ "background-color": "", "color": "" })
 
     }
 
@@ -539,8 +562,8 @@ console.log(data);
         container.style.transform = "translateX(" + translate + "vw" + ")";
     });
     var sendAnswer = function (e) {
-        console.log("questionId", e.target.questionId, "choiceId", e.target.choiceId);
-        $("#right-button").click()
+        console.log(e.target.questionId, e.target.answer);
+
     }
     startServey = () => {
         $("#container1").empty()
@@ -550,253 +573,210 @@ console.log(data);
 
 
     }
-    function refreshSwatch(e) {
-        let answerId = e.target.id.replace("slider", "answer")
-        document.getElementById(answerId).innerHTML = $("#" + e.target.id).slider("value")
 
-        //  var value = $("#" + sliderid).slider("value")
-        //answerid.innerHTML = value
-
-    }
     getData = () => {
-        $.ajax({
-            url: "/getData",
-            type: "GET"
-        }).done(function (data) {
-            console.log(data);
 
+        container.style.transform = "translateX(" + 0 + "vw" + ")";
+        translate = 0;
+        maxTranslate = null
 
 
-            container.style.transform = "translateX(" + 0 + "vw" + ")";
-            translate = 0;
-            maxTranslate = null
+        var questions = data;
+        maxTranslate = (questions.length - 1) * 100
+        data.forEach((question, index) => {
 
+            var question_type = "question.question_type"
 
-            var questions = data.data[1].questions;
-            maxTranslate = (questions.length - 1) * 100
-            questions.forEach((question, index) => {
+            var mainContainer = document.createElement("div")
+            mainContainer.className = "mainContainer"
+            mainContainer.id = "mainContainer" + question.questionId
 
-                var question_type = question.question_type
 
-                var mainContainer = document.createElement("div")
-                mainContainer.className = "mainContainer"
-                mainContainer.id = "mainContainer" + question.id
 
+            var part1 = document.createElement("div")
+            part1.style.height = "25vh";
+            var part1Container = document.createElement("div");
+            part1Container.style.backgroundColor = '#F4F4F8';
+            part1Container.style.width = '100%';
+            part1Container.style.display = 'flex';
+            part1Container.style.justifyContent = 'center';
+            part1Container.style.position = 'relative';
+            part1Container.style.height = '100px';
 
+            var part1Img = document.createElement('img');
+            part1Img.style.height = '100px'
+            part1Img.src = 'HELSINKI_Tunnus_MUSTA.png'
 
-                var part1 = document.createElement("div")
-                part1.style.height = "25vh";
-                var part1Container = document.createElement("div");
-                part1Container.style.backgroundColor = '#F4F4F8';
-                part1Container.style.width = '100%';
-                part1Container.style.display = 'flex';
-                part1Container.style.justifyContent = 'center';
-                part1Container.style.position = 'relative';
-                part1Container.style.height = '100px';
+            var part1Btn = document.createElement("button")
+            part1Btn.style.backgroundColor = 'transparent'
+            part1Btn.style.border = '0'
+            part1Btn.style.position = 'absolute';
+            part1Btn.style.right = '10px';
+            part1Btn.style.height = '100%';
+            part1Btn.style.fontSize = '30px';
 
-                var part1Img = document.createElement('img');
-                part1Img.style.height = '100px'
-                part1Img.src = 'HELSINKI_Tunnus_MUSTA.png'
-
-                var part1Btn = document.createElement("button")
-                part1Btn.style.backgroundColor = 'transparent'
-                part1Btn.style.border = '0'
-                part1Btn.style.position = 'absolute';
-                part1Btn.style.right = '10px';
-                part1Btn.style.height = '100%';
-                part1Btn.style.fontSize = '30px';
-
-                part1Btn.addEventListener("click", function () {
-                    goTo('setting', 'who')
-                })
-
-                var part1Icon = document.createElement("i")
-                part1Icon.className = "fa fa-cog"
-
-                part1Btn.appendChild(part1Icon)
-                part1Container.appendChild(part1Img)
-                part1.appendChild(part1Container)
-
-
-                var part2 = document.createElement("div")
-                part2.style.display = 'flex';
-                part2.style.justifyContent = 'center';
-                part2.style.height = '25vh';
-
-
-
-                var part2Container = document.createElement("div")
-                part2Container.style.backgroundColor = '#F4F4F8';
-                part2Container.style.width = '80%';
-                part2Container.style.display = 'flex';
-                part2Container.style.justifyContent = 'center';
-                part2Container.style.alignItems = 'center';
-                part2Container.style.color = '#2AB7CA';
-                part2Container.style.fontSize = '30px';
-                part2Container.style.borderRadius = '50px';
-                part2Container.style.textAlign = 'center';
-                part2Container.style.padding = '15px';
-
-
-                part2Container.innerHTML = question.heading.fi;
-
-                part2.appendChild(part2Container)
-
-
-                var part3 = document.createElement("div")
-                part3.style.display = 'flex';
-                part3.style.justifyContent = 'center';
-                part3.style.height = '25vh';
-                part3.style.alignItems = 'center';
-
-                var part3Container = document.createElement("div")
-                part3Container.style.backgroundColor = '#F4F4F8';
-                part3Container.style.width = '95%';
-                part3Container.style.padding = '15px';
-
-                part3Container.style.display = 'flex';
-                part3Container.style.justifyContent = 'center';
-                // part3Container.style.alignItems = 'center';
-                part3Container.style.color = '#2AB7CA';
-                part3Container.style.fontSize = '30px';
-                part3Container.style.borderRadius = '50px';
-
-                part3.appendChild(part3Container)
-
-
-                var part4 = document.createElement("div")
-                part4.style.display = 'flex';
-                part4.style.justifyContent = 'center';
-                part4.style.height = '25vh';
-                part4.style.alignItems = 'center';
-
-                var part4Container = document.createElement("div")
-                part4Container.style.width = '50%';
-                part4Container.style.display = 'flex';
-                part4Container.style.justifyContent = 'space-between';
-                part4Container.style.alignItems = 'center';
-
-                part4Container.style.height = '100px';
-
-                var part4btn1 = document.createElement("button")
-                part4btn1.className = "btn button";
-                part4btn1.innerHTML = "Edellinen"
-                part4btn1.addEventListener("click", function () {
-                    if (index == 0) {
-                        goTo("who", null)
-                    }
-                    else {
-                        $("#left-button").click()
-                    }
-                })
-
-                var part4span = document.createElement("span")
-                part4span.innerHTML = index + 1 + "/8";
-                part4span.style.color = "#2AB7CA"
-
-
-                var part4btn2 = document.createElement("button")
-                part4btn2.className = "btn button";
-                part4btn2.innerHTML = "Seuraava"
-                part4btn2.addEventListener("click", function () {
-
-                    if (index == 7) {
-                        $("#container2").show()
-                        goTo("thankyou", null)
-                        $("#container1").empty()
-
-
-                    }
-                    else {
-                        $("#right-button").click()
-
-                    }
-                })
-
-                part4Container.appendChild(part4btn1)
-                part4Container.appendChild(part4span)
-
-                part4Container.appendChild(part4btn2)
-
-                var h5 = document.createElement("h5")
-                h5.innerHTML = "Guudlyf 2019";
-                h5.style.position = 'fixed';
-                h5.style.bottom = '0';
-                h5.style.width = '100%';
-                h5.style.textAlign = 'center';
-                h5.style.color = '#BBBBBB';
-
-                part4.appendChild(part4Container)
-                part4.appendChild(h5)
-
-                mainContainer.appendChild(part1)
-                mainContainer.appendChild(part2)
-                mainContainer.appendChild(part3)
-                mainContainer.appendChild(part4)
-
-                document.getElementById("container1").appendChild(mainContainer);
-
-                if (question_type == "Word") {
-                    var choices = question.choices
-                    choices.map(item => {
-                        var choice = document.createElement("button")
-                        choice.className = 'button-answer'
-                        choice.questionId = question.id;
-                        choice.choiceId = item.id;
-                        var icon = document.createElement("img");
-                        icon.src = "icons8-happy-100.png";
-
-                        var text = document.createElement("p");
-                        text.innerHTML = item.text.fi.toLowerCase();
-
-                        choice.appendChild(icon);
-                        choice.appendChild(text)
-                        choice.addEventListener("click", sendAnswer, false)
-                        part3Container.appendChild(choice)
-                    })
-                }
-                else if (question_type == "Slider") {
-                    var slider = document.createElement("div");
-                    slider.id = "slider-" + question.id;
-                    slider.style.width = "100%";
-
-                    part2Container.style.flexDirection = 'column'
-
-                    setTimeout(() => {
-                        $("#" + slider.id).slider({
-                            orientation: "horizontal",
-                            range: "min",
-                            value: 5,
-                            min: 0,
-                            max: 10,
-                            slide: refreshSwatch,
-                            change: refreshSwatch,
-
-                        });
-                    }, 500);
-
-
-
-                    var answer = document.createElement("p");
-                    answer.id = "answer-" + question.id
-                    answer.innerHTML = "5"
-                    answer.style.color = "rgb(42, 183, 202)"
-                    part2Container.appendChild(answer)
-                    part3Container.appendChild(slider)
-
-
-
-
-                }
-
-
-
-
-
+            part1Btn.addEventListener("click", function () {
+                goTo('setting', 'who')
             })
-            $(document).scrollTo('#content');
 
-        });
+            var part1Icon = document.createElement("i")
+            part1Icon.className = "fa fa-cog"
+
+            part1Btn.appendChild(part1Icon)
+            part1Container.appendChild(part1Img)
+            part1.appendChild(part1Container)
+
+
+            var part2 = document.createElement("div")
+            part2.style.display = 'flex';
+            part2.style.justifyContent = 'center';
+            part2.style.height = '25vh';
+
+
+
+            var part2Container = document.createElement("div")
+            part2Container.style.backgroundColor = '#F4F4F8';
+            part2Container.style.width = '80%';
+            part2Container.style.display = 'flex';
+            part2Container.style.justifyContent = 'center';
+            part2Container.style.alignItems = 'center';
+            part2Container.style.color = '#2AB7CA';
+            part2Container.style.fontSize = '30px';
+            part2Container.style.borderRadius = '50px';
+            part2Container.style.textAlign = 'center';
+            part2Container.style.padding = '15px';
+            part2Container.innerHTML = question.question
+
+            part2.appendChild(part2Container)
+
+
+            var part3 = document.createElement("div")
+            part3.style.display = 'flex';
+            part3.style.justifyContent = 'center';
+            part3.style.height = '25vh';
+            part3.style.alignItems = 'center';
+
+            var part3Container = document.createElement("div")
+            part3Container.style.backgroundColor = '#F4F4F8';
+            part3Container.style.width = '95%';
+            part3Container.style.padding = '15px';
+
+            part3Container.style.display = 'flex';
+            part3Container.style.justifyContent = 'center';
+            // part3Container.style.alignItems = 'center';
+            part3Container.style.color = '#2AB7CA';
+            part3Container.style.fontSize = '30px';
+            part3Container.style.borderRadius = '50px';
+
+            part3.appendChild(part3Container)
+
+
+            var part4 = document.createElement("div")
+            part4.style.display = 'flex';
+            part4.style.justifyContent = 'center';
+            part4.style.height = '25vh';
+            part4.style.alignItems = 'center';
+
+            var part4Container = document.createElement("div")
+            part4Container.style.width = '50%';
+            part4Container.style.display = 'flex';
+            part4Container.style.justifyContent = 'space-between';
+            part4Container.style.alignItems = 'center';
+
+            part4Container.style.height = '100px';
+
+            var part4btn1 = document.createElement("button")
+            part4btn1.className = "btn button";
+            part4btn1.innerHTML = "Edellinen"
+            part4btn1.addEventListener("click", function () {
+                if (index == 0) {
+                    goTo("who", null)
+                }
+                else {
+                    $("#left-button").click()
+                }
+            })
+
+            var part4span = document.createElement("span")
+            part4span.innerHTML = index + 1 + "/8";
+            part4span.style.color = "#2AB7CA"
+
+
+            var part4btn2 = document.createElement("button")
+            part4btn2.className = "btn button2";
+            part4btn2.innerHTML = index == 7 ? "Lähetä" : "Seuraava"
+            part4btn2.disabled = "true"
+
+
+            part4btn2.addEventListener("click", function (e) {
+                sendAnswer(e)
+                if (index == 7) {
+                    $("#container2").show()
+                    goTo("thankyou", null)
+                    $("#container1").empty()
+
+                }
+                else {
+                    $("#right-button").click()
+                }
+            })
+
+            part4Container.appendChild(part4btn1)
+            part4Container.appendChild(part4span)
+
+            part4Container.appendChild(part4btn2)
+
+            var h5 = document.createElement("h5")
+            h5.innerHTML = "Guudlyf 2019";
+            h5.style.position = 'fixed';
+            h5.style.bottom = '0';
+            h5.style.width = '100%';
+            h5.style.textAlign = 'center';
+            h5.style.color = '#BBBBBB';
+
+            part4.appendChild(part4Container)
+            part4.appendChild(h5)
+
+            mainContainer.appendChild(part1)
+            mainContainer.appendChild(part2)
+            mainContainer.appendChild(part3)
+            mainContainer.appendChild(part4)
+
+            document.getElementById("container1").appendChild(mainContainer);
+            var choices = question.choices
+            choices.map(item => {
+                var choice = document.createElement("button")
+                choice.className = 'button-answer'
+                choice.questionId = question.questionId;
+                choice.id = item.choiceId;
+                var icon = document.createElement("img");
+                icon.src = item.icon;
+
+                var text = document.createElement("p");
+                text.innerHTML = item.choice
+
+                choice.appendChild(icon);
+                choice.appendChild(text)
+                part3Container.appendChild(choice)
+
+                $(choice).click(function (event) {
+                    $(part4btn2).prop("disabled", false)
+                    event.preventDefault()
+                    $('.button-answer').css({ "background-color": "white", "color": "#2AB7CA" })
+                    $(event.currentTarget).css({ "background-color": "#2AB7CA", "color": "white" })
+                    $(part4btn2).css({ "background-color": "#2AB7CA", "color": "white" })
+                    $(part4btn2).prop({ "questionId": question.questionId, "answer": item.choice })
+
+
+                })
+            })
+
+
+
+
+        })
+        $(document).scrollTo('#content');
+
     }
 
 
