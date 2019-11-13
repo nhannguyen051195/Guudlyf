@@ -4,14 +4,14 @@ const express = require("express");
 const app = express();
 const request = require('request');
 const mongoose = require('mongoose');
+const surveyRouter = require('./routes/surveyRouter');
 const path = require('path');
-
+const hostname = '127.0.0.1';
+const port = 3000;
 
 // Import Routes
 //const postsRoute = require('.routes/posts');
 //app.use('/posts', postsRoute);
-
-
 
 /* var jsdom = require("jsdom");
 const { JSDOM } = jsdom;
@@ -20,7 +20,6 @@ const { document } = (new JSDOM('')).window;
 global.document = document;
 var cors = require('cors')
 
-
 app.use(cors()) */
 
 //var $ = jQuery = require('jquery')(window);
@@ -28,12 +27,7 @@ app.use(cors()) */
 //  mongoose = require("mongoose"),
 //   methodOverride = require("method-override");
 //app.use(express.static("public"))
-app.set('views', './views');
-app.set("view engine", "ejs");
-const hostname = '127.0.0.1';
-const port = 3000;
 
-app.use(express.static(__dirname + '/public'));
 
 
 console.log(process.env);
@@ -42,7 +36,7 @@ console.log(process.env);
 mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_HOST}:${process.env.DB_PORT}/admin`, { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to MongoDB.');
     //https.createServer(options, app).listen(process.env.APP_PORT);            // Local https
-    app.listen(process.env.APP_PORT);
+    //app.listen(process.env.APP_PORT);
 }, err => {
     console.log('Connection to MongoDB failed :( ' + err);
 });
@@ -73,6 +67,12 @@ var options = {
 
 
 request(options, callback);
+
+// Middleware
+app.set('views', './views');
+app.set("view engine", "ejs");
+app.use('/survey', surveyRouter);
+app.use(express.static(__dirname + '/public'));
 
 app.listen(process.env.PORT || port)
 
