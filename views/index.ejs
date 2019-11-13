@@ -1,6 +1,10 @@
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
 <script src="/mdb.min.js"></script>
+<script src="/data.js"></script>
+
 <link href="/mdb.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -23,6 +27,8 @@
 
 
 <style>
+    @media only screen and (max-width: 600px) {}
+
     .chart {
         min-width: 310px;
         height: 400px;
@@ -101,7 +107,7 @@
     }
 
     .button {
-        width: 200px;
+        width: 195px;
         background-color: #2AB7CA;
         border: #2AB7CA;
         color: white;
@@ -132,6 +138,7 @@
         color: #2AB7CA;
         background-color: #F4F4F8;
         cursor: pointer;
+        font-size: 18px;
     }
 
     .mainContainer {
@@ -256,15 +263,14 @@
         background-color: transparent;
         border-radius: 15px;
         padding: 5px;
-        height: 95px;
-        width: 80px;
+        width: 90px;
         cursor: pointer;
-        margin: 10px;
+        margin: 5px;
         color: rgb(42, 183, 202);
     }
 
     .button-answer p {
-        font-size: 10px
+        font-size: 14px
     }
 
     .button-answer img {
@@ -288,8 +294,8 @@
                 </div>
                 <div
                     style="text-align: center;display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
-                    <h1>Tervetuloa!</h1>
-                    <h3>Vastaamalla kyselyyn autat meitä parantamaan viihtyvyyttä rakennuksen sisällä!</h3>
+                    <h2>Tervetuloa!!!</h2>
+                    <h5>Vastaamalla kyselyyn autat meitä parantamaan viihtyvyyttä rakennuksen sisällä!</h4>
 
                 </div>
                 <div
@@ -321,7 +327,7 @@
                 </div>
                 <div style="display: flex; justify-content:center; height: 50vh;">
                     <div
-                        style="display: flex;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 30px;height: 90%;padding: 30px;flex-direction: column;">
+                        style="display: flex;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;height: 90%;padding: 30px;flex-direction: column;">
                         <div class="setting-row">
                             <div class="setting-item">Valitse rakennus</div>
                             <select style="background-color: white;color: #2AB7CA;border-color: #2AB7CA;"
@@ -375,7 +381,7 @@
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh;">
                     <div
-                        style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 50px;color: #2AB7CA;font-size: 30px;">
+                        style="text-align:center;display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 50px;color: #2AB7CA;font-size: 30px;">
                         Oletko oppilas vai
                         henkilökuntaa?
                     </div>
@@ -392,7 +398,7 @@
 
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
-                    <div style="height: 100px;display: flex;width: 50%;justify-content: space-between;">
+                    <div style="height: 100px;display: flex;;justify-content: space-between;">
                         <button onclick="goTo('welcome',null)" class='btn button'>Edellinen</button>
                         <button class='btn button'>Seuraava</button>
 
@@ -418,7 +424,8 @@
                 <div style="display: flex; justify-content:center; height: 25vh;">
                     <div
                         style="text-align:center;display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 30px; height: 60%;">
-                        <h3>Kiitos vastauksista! Halutessasi voit jättää alle avoimen palautteen.</h3></div>
+                        <h5>Kiitos vastauksista! Halutessasi voit jättää alle avoimen palautteen.</h5>
+                    </div>
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh;">
                     <textarea
@@ -445,9 +452,9 @@
                     </div>
                 </div>
                 <div
-                    style="display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
+                    style="text-align:center;display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
                     <h1>Kiitos!</h1>
-                    <h4>Antamalla palautetta autat meitä saavuttamaan mukavan paikan opiskella ja työskennellä.</h4>
+                    <h5>Antamalla palautetta autat meitä saavuttamaan mukavan paikan opiskella ja työskennellä.</h5>
 
                 </div>
                 <div
@@ -492,6 +499,8 @@
         class="fa fa-chevron-right"></i></button>
 
 <script>
+console.log(data);
+    
     let prev = null
     goTo = (id, prevId) => {
         $('#' + id)[0].scrollIntoView(true);
@@ -625,6 +634,10 @@
                 part2Container.style.color = '#2AB7CA';
                 part2Container.style.fontSize = '30px';
                 part2Container.style.borderRadius = '50px';
+                part2Container.style.textAlign = 'center';
+                part2Container.style.padding = '15px';
+
+
                 part2Container.innerHTML = question.heading.fi;
 
                 part2.appendChild(part2Container)
@@ -638,10 +651,12 @@
 
                 var part3Container = document.createElement("div")
                 part3Container.style.backgroundColor = '#F4F4F8';
-                part3Container.style.width = '80%';
+                part3Container.style.width = '95%';
+                part3Container.style.padding = '15px';
+
                 part3Container.style.display = 'flex';
                 part3Container.style.justifyContent = 'center';
-                part3Container.style.alignItems = 'center';
+                // part3Container.style.alignItems = 'center';
                 part3Container.style.color = '#2AB7CA';
                 part3Container.style.fontSize = '30px';
                 part3Container.style.borderRadius = '50px';
