@@ -348,11 +348,16 @@
                             <div class="setting-item">Valitse rakennus</div>
                             <select style="background-color: white;color: #2AB7CA;border-color: #2AB7CA;"
                                 class="setting-item">
-                                <option value="0"> -- Valitse rakennus --</option>
-                                <option value="1">Kaisaniemen ala-aste</option>
-                                <option value="2">Keinutien ala-aste</option>
-                                <option value="3">Myllypuron peruskoulu</option>
-                                <option value="4">Meritalo</option>
+                                <form action="/upload" method="post" enctype="multipart/form-data"> Title:
+                                    <input list="schoolname" name="schoolname">
+                                    <datalist id="schoolname">
+                                        <option value="0"> -- Valitse rakennus --</option>
+                                        <option value="Kaisaniemen ala-aste">Kaisaniemen ala-aste</option>
+                                        <option value="Keinutien ala-aste">Keinutien ala-aste</option>
+                                        <option value="Myllypuron peruskoulu">Myllypuron peruskoulu</option>
+                                        <option value="Meritalo">Meritalo</option>
+                                    </datalist>
+                                </form>
                             </select>
 
                         </div>
@@ -376,7 +381,10 @@
 
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
                     <div style="height: 100px;display: flex;justify-content: space-between;">
+                        <!--
                         <button onclick="goBackTo()" class='btn button'>Tallenna</button>
+                        -->
+                        <input type="submit">
 
                     </div>
                     <h5 style="position: fixed;bottom: 12px;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019

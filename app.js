@@ -5,6 +5,7 @@ const app = express();
 const request = require('request');
 const mongoose = require('mongoose');
 const surveyRouter = require('./routes/surveyRouter');
+const surveyModel = require('./models/surveyModel');
 const path = require('path');
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -35,7 +36,7 @@ console.log(process.env);
 // Connect to MongoDB-------------------------------------------------------------------------------------------------------------------------------------------------
 mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_HOST}:${process.env.DB_PORT}/admin`, { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to MongoDB.');
-    https.createServer(options, app).listen(process.env.APP_PORT);            // Local https
+    //https.createServer(options, app).listen(process.env.APP_PORT);            // Local https
     //app.listen(process.env.APP_PORT);
 }, err => {
     console.log('Connection to MongoDB failed :( ' + err);
@@ -45,6 +46,28 @@ mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${proce
 app.get("/", function (req, res) {
     res.render("index");
 })
+
+app.post("/upload", function (req, res) {
+    res.render("index");
+    console.log('Creating Survey');
+    surveyModel.create({
+        schoolname: req.body.schoolname,
+        /*
+        schoolclass: req.body.class,
+        indoorTemperature: req.body.temp,
+        indoorFreshness: req.body.fresh,
+        indoorMoisture: req.body.moist,
+        indoorSmell: req.body.smell,
+        indoorCleanliness: req.body.clean,
+        indoorLightning: req.body.light,
+        indoorAcoustic: req.body.acoustic,
+        indoorWork: req.body.work,
+        description: req.body.comment
+        */
+    });
+})
+
+
 var data;
 
 app.get("/getData", function (req, res) {
@@ -74,5 +97,5 @@ app.set("view engine", "ejs");
 app.use('/survey', surveyRouter);
 app.use(express.static(__dirname + '/public'));
 
-app.listen(process.env.PORT || port)
+app.listen(process.env.PORT || port);
 
