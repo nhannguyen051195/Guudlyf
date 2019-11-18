@@ -56,7 +56,6 @@ app.post("/upload", function (req, res) {
     console.log('Creating Survey');
     surveyModel.create({
         schoolname: req.body.schoolname,
-        /*
         schoolclass: req.body.class,
         indoorTemperature: req.body.indoorTemperature,
         indoorFreshness: req.body.indoorFreshness,
@@ -66,8 +65,8 @@ app.post("/upload", function (req, res) {
         indoorLightning: req.body.indoorLightning,
         indoorAcoustic: req.body.indoorAcoustic,
         indoorWork: req.body.indoorWork,
-        description: req.body.comment
-        */
+        //description: req.body.description,
+        date: req.body.date
     });
 })
 

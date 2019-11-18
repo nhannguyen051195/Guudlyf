@@ -6,15 +6,16 @@ const Schema = mongoose.Schema;
 const surveySchema = new Schema({
     schoolname: {type: String, enum: ['Kaisaniemen ala-aste', 'Meritalo', 'Keinutien ala-aste', 'Myllypuron peruskoulu']},
     schoolclass: String,
-    indoorTemperature: Number,
-    indoorFreshness: Number,
-    indoorMoisture: Number,
+    indoorTemperature: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
+    indoorFreshness: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
+    indoorMoisture: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
     indoorSmell: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
     indoorCleanliness: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
-    indoorLightning: Number,
-    inDoorAcoustic: Number,
-    indoorWork: Number,
-    description: [{body: String, date: Date}]
+    indoorLightning: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
+    inDoorAcoustic: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
+    indoorWork: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
+    description: [{body: String, date: Date}],
+    date: Date
 });
 
 module.exports = mongoose.model('survey', surveySchema);

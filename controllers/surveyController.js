@@ -24,7 +24,8 @@ exports.survey_list_post = (data) => {
             indoorLightning: req.body.indoorLightning,
             indoorAcoustic: req.body.inDoorAcoustic,
             indoorWork: req.body.indoorWork,
-            description: req.body.comment
+            description: req.body.description,
+            date: req.body.date
         })
         return {status: 'Save OK: ' + item.id}
     }).catch((err) => {
