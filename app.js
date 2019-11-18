@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const request = require('request');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const surveyRouter = require('./routes/surveyRouter');
 const surveyModel = require('./models/surveyModel');
 const path = require('path');
@@ -29,7 +30,10 @@ app.use(cors()) */
 //   methodOverride = require("method-override");
 //app.use(express.static("public"))
 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 console.log(process.env);
 
@@ -54,14 +58,14 @@ app.post("/upload", function (req, res) {
         schoolname: req.body.schoolname,
         /*
         schoolclass: req.body.class,
-        indoorTemperature: req.body.temp,
-        indoorFreshness: req.body.fresh,
-        indoorMoisture: req.body.moist,
-        indoorSmell: req.body.smell,
-        indoorCleanliness: req.body.clean,
-        indoorLightning: req.body.light,
-        indoorAcoustic: req.body.acoustic,
-        indoorWork: req.body.work,
+        indoorTemperature: req.body.indoorTemperature,
+        indoorFreshness: req.body.indoorFreshness,
+        indoorMoisture: req.body.indoorMoisture,
+        indoorSmell: req.body.indoorSmell,
+        indoorCleanliness: req.body.indoorCleanliness,
+        indoorLightning: req.body.indoorLightning,
+        indoorAcoustic: req.body.indoorAcoustic,
+        indoorWork: req.body.indoorWork,
         description: req.body.comment
         */
     });
