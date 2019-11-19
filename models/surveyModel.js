@@ -14,7 +14,7 @@ const surveySchema = new Schema({
     indoorLightning: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
     inDoorAcoustic: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
     indoorWork: {type: Number, enum: ['0', '1', '2', '3', '4', '5']},
-    description: [{body: String, date: Date}],
+    description: String,
     date: Date
 });
 

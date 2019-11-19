@@ -38,10 +38,12 @@ app.use(bodyParser.urlencoded({
 console.log(process.env);
 
 // Connect to MongoDB-------------------------------------------------------------------------------------------------------------------------------------------------
-mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_HOST}:${process.env.DB_PORT}/admin`, { useNewUrlParser: true }).then(() => {
+// Connecting locally through MongoDB Compass
+//mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_HOST}:${process.env.DB_PORT}/admin`, { useNewUrlParser: true }).then(() => {
+
+// MongoDB.Atlas
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to MongoDB.');
-    //https.createServer(options, app).listen(process.env.APP_PORT);            // Local https
-    //app.listen(process.env.APP_PORT);
 }, err => {
     console.log('Connection to MongoDB failed :( ' + err);
 });
@@ -65,7 +67,7 @@ app.post("/upload", function (req, res) {
         indoorLightning: req.body.indoorLightning,
         indoorAcoustic: req.body.indoorAcoustic,
         indoorWork: req.body.indoorWork,
-        //description: req.body.description,
+        description: req.body.description,
         date: req.body.date
     });
 })
