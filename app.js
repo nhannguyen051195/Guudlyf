@@ -38,10 +38,10 @@ app.use(bodyParser.urlencoded({
 console.log(process.env);
 
 // Connect to MongoDB-------------------------------------------------------------------------------------------------------------------------------------------------
-// Connecting locally through MongoDB Compass
+// Connecting locally through MongoDB Compass locally
 //mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_HOST}:${process.env.DB_PORT}/admin`, { useNewUrlParser: true }).then(() => {
 
-// MongoDB.Atlas
+// MongoDB.Atlas (Server)
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to MongoDB.');
 }, err => {
@@ -58,7 +58,7 @@ app.post("/upload", function (req, res) {
     console.log('Creating Survey');
     surveyModel.create({
         schoolname: req.body.schoolname,
-        schoolclass: req.body.class,
+        schoolclass: req.body.schoolclass,
         indoorTemperature: req.body.indoorTemperature,
         indoorFreshness: req.body.indoorFreshness,
         indoorMoisture: req.body.indoorMoisture,
