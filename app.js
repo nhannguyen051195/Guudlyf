@@ -9,6 +9,13 @@ const surveyModel = require('./models/surveyModel');
 const path = require('path');
 const hostname = '127.0.0.1';
 const port = 3000;
+var cors = require('cors')
+
+
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.json())
+app.use(cors())
 
 // Import Routes
 //const postsRoute = require('.routes/posts');
@@ -29,12 +36,13 @@ app.use(cors()) */
 //   methodOverride = require("method-override");
 //app.use(express.static("public"))
 
+//mongodb://<dbuser>:<dbpassword>@ds031329.mlab.com:31329/goodlife
 
-
-console.log(process.env);
 
 // Connect to MongoDB-------------------------------------------------------------------------------------------------------------------------------------------------
 mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${process.env.DB_HOST}:${process.env.DB_PORT}/admin`, { useNewUrlParser: true }).then(() => {
+//mongoose.connect(`mongodb://${process.env.MLAB_USER}:${process.env.MLAB_PASSWORD}@${process.env.MLAB_HOST}:${process.env.MLAB_PORT}/goodlife`, { useNewUrlParser: true }).then(() => {
+
     console.log('Connected successfully to MongoDB.');
     //https.createServer(options, app).listen(process.env.APP_PORT);            // Local https
     //app.listen(process.env.APP_PORT);
@@ -43,9 +51,9 @@ mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@${proce
 });
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-app.get("/", function (req, res) {
+/* app.get("/", function (req, res) {
     res.render("index");
-})
+}) */
 
 app.post("/upload", function (req, res) {
     res.render("index");
@@ -69,10 +77,14 @@ app.post("/upload", function (req, res) {
 
 
 var data;
+const questionsList = require("./routes/questions")
+const answers = require("./routes/answers")
 
-app.get("/getData", function (req, res) {
-    res.send(data);
-})
+
+//app.get("/getData", questionsList)
+app.get("/", questionsList)
+app.use("/answer", answers)
+
 
 
 
