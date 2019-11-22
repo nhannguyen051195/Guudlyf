@@ -32,5 +32,5 @@ app.set('views', './views');
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 
-app.listen(31329 || 3000);
+app.listen(process.env.PORT || 3000);
 
