@@ -10,9 +10,9 @@ app.use(bodyParser.json())
 app.use(cors())
 
 //mongoose.connect(`mongodb://${process.env.MLAB_USER}:${process.env.MLAB_PASSWORD}@${process.env.MLAB_HOST}:${process.env.MLAB_PORT}/goodlife`, { useNewUrlParser: true }).then(() => {
-    mongoose.connect(`mongodb://goodlife:<dbpassword>@ds031329.mlab.com:31329/goodlife`, { useNewUrlParser: true }).then(() => {
+mongoose.connect(`mongodb://goodlife:@ds031329.mlab.com:31329/goodlife`, { useNewUrlParser: true }).then(() => {
 
-console.log('Connected successfully to MongoDB.');
+    console.log('Connected successfully to MongoDB.');
 
 }, err => {
     console.log('Connection to MongoDB failed :( ' + err);
