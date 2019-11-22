@@ -11,24 +11,6 @@ const path = require('path');
 const hostname = '127.0.0.1';
 const port = 3000;
 
-// Import Routes
-//const postsRoute = require('.routes/posts');
-//app.use('/posts', postsRoute);
-
-/* var jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-const { window } = new JSDOM();
-const { document } = (new JSDOM('')).window;
-global.document = document;
-var cors = require('cors')
-
-app.use(cors()) */
-
-//var $ = jQuery = require('jquery')(window);
-//   bodyParser = require("body-parser"),
-//  mongoose = require("mongoose"),
-//   methodOverride = require("method-override");
-//app.use(express.static("public"))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
