@@ -520,6 +520,9 @@
             url: "/feedback",
             data: JSON.stringify(data),
             contentType: 'application/json',
+        }).then(function (data) {
+            $("textarea#feedback").val("")
+
         })
     }
     let prev = null

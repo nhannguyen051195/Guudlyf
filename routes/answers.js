@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
         post.answer = req.body.answer;
         post.answerId = req.body.answerId;
         post.date = new Date();
-        
+
         const savedPosts = await post.save()
         res.json(savedPosts)
     }
@@ -24,7 +24,10 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
     try {
         const posts = await Answer.find()
-        res.json(posts)
+        //res.json(posts)
+        res.render("answers", {
+            posts: JSON.stringify(posts)
+        });
 
     }
     catch (err) {
