@@ -9,8 +9,10 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json())
 app.use(cors())
 
-mongoose.connect(`mongodb://${process.env.MLAB_USER}:${process.env.MLAB_PASSWORD}@${process.env.MLAB_HOST}:${process.env.MLAB_PORT}/goodlife`, { useNewUrlParser: true }).then(() => {
-    console.log('Connected successfully to MongoDB.');
+//mongoose.connect(`mongodb://${goodlife}:${process.env.MLAB_PASSWORD}@${process.env.MLAB_HOST}:${process.env.MLAB_PORT}/goodlife`, { useNewUrlParser: true }).then(() => {
+mongoose.connect(`mongodb://goodlife:Goodlife123456@ds031329.mlab.com:31329/goodlife`, { useNewUrlParser: true }).then(() => {
+  
+console.log('Connected successfully to MongoDB.');
 
 }, err => {
     console.log('Connection to MongoDB failed :( ' + err);
@@ -30,5 +32,5 @@ app.set('views', './views');
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 
-app.listen(process.env.PORT || 3000);
+app.listen(31329 || 3000);
 
