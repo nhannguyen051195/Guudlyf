@@ -14,7 +14,6 @@ const questionSchema = new Schema({
         choiceId: { type: "String" },
         choice: { type: "String" },
         icon: { type: "String" },
-
     }]
 
 
