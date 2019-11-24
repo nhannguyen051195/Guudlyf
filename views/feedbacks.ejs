@@ -10,12 +10,11 @@
 <div class="container">
 
     <div class="table-responsive">
-        <table class="table table-condensed table-hover" style="display:none;" id="answers" data-sort-name="name"
+        <table class="table table-condensed table-hover" style="display:none;" id="feedbacks" data-sort-name="name"
             data-pagination="true" data-search="true" data-sortable="true">
             <thead>
-                <tr>
-                    <th data-field="question" data-sortable="true">Question</th>
-                    <th data-field="answer" data-sortable="true">Answer</th>
+                <tr> 
+                    <th data-field="feedback" data-sortable="true">Feedback</th>
                     <th data-field="date" data-sortable="true">Date</th>
                 </tr>
             </thead>
@@ -27,17 +26,19 @@
 
 
 <p id="yy" style="display:none"><%= posts %></p>
+
+
+
 <script>
     var answers = JSON.parse(document.getElementById("yy").innerText);
-    var $table = $('#answers')
-
-
+    var $table = $('#feedbacks')
     var data1 = [];
     answers.map(item => {
-        data1.push({  'question': item.question, 'answer': item.answer, 'date': moment(item.date).format('lll') })
+        data1.push({  'feedback': item.feedback, 'date': moment(item.date).format('lll') })
     })
+    
         $table.bootstrapTable({ data: data1, })
-        document.getElementById("answers").style.display = "table"
+        document.getElementById("feedbacks").style.display = "table"
 
 
 

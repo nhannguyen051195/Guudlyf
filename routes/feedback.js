@@ -19,9 +19,13 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
     try {
-        const posts = await Feedback.find()
-        res.json(posts)
+       
 
+        const posts = await Feedback.find()
+        res.render("feedbacks", {
+            posts: JSON.stringify(posts)
+        });
+    
     }
     catch (err) {
         res.json({ message: err })
