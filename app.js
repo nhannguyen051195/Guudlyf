@@ -12,6 +12,7 @@ app.use(cors())
 mongoose.connect(process.env.MLAB_URL, { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to MongoDB.');
 
+
 }, err => {
     console.log('Connection to MongoDB failed :( ' + err);
 });
@@ -20,6 +21,7 @@ mongoose.connect(process.env.MLAB_URL, { useNewUrlParser: true }).then(() => {
 const questionsList = require("./routes/questions")
 const answers = require("./routes/answers")
 const feedback = require("./routes/feedback")
+
 
 
 app.get("/", questionsList)
@@ -31,6 +33,5 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 
 app.listen(process.env.PORT || 3000);
-//app.listen( 3000);
 
 
