@@ -6,6 +6,8 @@ const Answer = require("../models/answerModel")
 router.post("/", async (req, res) => {
     try {
         var post = new Answer();
+        post.schoolname = req.body.schoolname;
+        post.schoolclass = req.body.schoolclass;
         post.questionId = req.body.questionId;
         post.question = req.body.question;
         post.answer = req.body.answer;

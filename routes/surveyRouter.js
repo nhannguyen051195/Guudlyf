@@ -10,17 +10,17 @@ const surveyModel = require('../models/surveyModel');
 router.post('/', (req, res) => {
    console.log('Survey router');
    surveyModel.create({
-      schoolname: req.body.school,
-      schoolclass: req.body.class,
-      indoorTemperature: req.body.temp,
-      indoorFreshness: req.body.fresh,
-      indoorMoisture: req.body.moist,
-      indoorSmell: req.body.smell,
-      indoorCleanliness: req.body.clean,
-      indoorLightning: req.body.light,
-      indoorAcoustic: req.body.acoustic,
-      indoorWork: req.body.work,
-      description: req.body.comment
+      schoolname: req.body.schoolname,
+      schoolclass: req.body.schoolclass,
+      indoorTemperature: req.body.indoorTemperature,
+      indoorFreshness: req.body.indoorFreshness,
+      indoorMoisture: req.body.indoorMoisture,
+      indoorSmell: req.body.indoorSmell,
+      indoorCleanliness: req.body.indoorCleanliness,
+      indoorLightning: req.body.indoorLightning,
+      indoorAcoustic: req.body.inDoorAcoustic,
+      indoorWork: req.body.indoorWork,
+      description: req.body.description,
    });
 });
 

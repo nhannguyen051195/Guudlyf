@@ -1,7 +1,8 @@
 'use strict';
 const express = require("express");
 const router = express.Router();
-const Post = require("../models/testModel")
+const Post = require("../models/testModel");
+
 router.post("/", async (req, res) => {
     try {
         console.log(req.body.choices);
@@ -11,7 +12,7 @@ router.post("/", async (req, res) => {
         for (var i in req.body.choices) {
             var choiceId = req.body.choices[i].choiceId;
             var choice = req.body.choices[i].choice;
-            var icon = req.body.choices[i].icon
+            var icon = req.body.choices[i].icon;
             post.choices.push({ choice, choiceId, icon })
         }
         const savedPosts = await post.save()
@@ -21,7 +22,8 @@ router.post("/", async (req, res) => {
         res.json({ message: err })
 
     }
-})
+});
+
 router.get("/", async (req, res) => {
     try {
         const posts = await Post.find()
@@ -45,7 +47,8 @@ router.get("/:postID", async (req, res) => {
         res.json({ message: err })
 
     }
-})
+});
+
 router.delete("/:postID", async function (req, res) {
     //findByIdAndRemove
     try {

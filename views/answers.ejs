@@ -34,7 +34,7 @@
 
     var data1 = [];
     answers.map(item => {
-        data1.push({  'question': item.question, 'answer': item.answer, 'date': moment(item.date).format('lll') })
+        data1.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'question': item.question, 'answer': item.answer, 'date': moment(item.date).format('lll') })
     })
         $table.bootstrapTable({ data: data1, })
         document.getElementById("answers").style.display = "table"

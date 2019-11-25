@@ -549,7 +549,7 @@ input:checked+.slider:before {
                 </div>
                 <div
                     style="padding:15px;text-align: center;display: flex;justify-content: center;height: 25vh;align-items: center;flex-direction: column; color:#2AB7CA">
-                    <h2>Tervetuloa!!!</h2>
+                    <h2>Tervetuloa!</h2>
                     <h5>Vastaamalla kyselyyn autat meitä parantamaan viihtyvyyttä rakennuksen sisällä!</h4>
 
                 </div>
@@ -587,11 +587,13 @@ input:checked+.slider:before {
                             <div class="setting-item">Valitse rakennus</div>
                             <select style="background-color: white;color: #2AB7CA;border-color: #2AB7CA;"
                                 class="setting-item">
-                                <option value="0"> -- Valitse rakennus --</option>
-                                <option value="Kaisaniemen ala-aste">Kaisaniemen ala-aste</option>
-                                <option value="Keinutien ala-aste">Keinutien ala-aste</option>
-                                <option value="Myllypuron peruskoulu">Myllypuron peruskoulu</option>
-                                <option value="Meritalo">Meritalo</option>
+                                <datalist id="schoolname">
+                                    <option value="0"> -- Valitse rakennus --</option>
+                                    <option value="Kaisaniemen ala-aste">Kaisaniemen ala-aste</option>
+                                    <option value="Keinutien ala-aste">Keinutien ala-aste</option>
+                                    <option value="Myllypuron peruskoulu">Myllypuron peruskoulu</option>
+                                    <option value="Meritalo">Meritalo</option>
+                                </datalist>
                             </select>
                         </div>
                         <div class="setting-row">
