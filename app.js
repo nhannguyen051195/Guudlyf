@@ -19,9 +19,9 @@ const questionsList = require("./routes/questions");
 const answers = require("./routes/answers");
 const feedback = require("./routes/feedback");
 
-app.get("/", questionsList)
-app.use("/answers", answers)
-app.use("/feedback", feedback)
+app.get("/", questionsList);
+app.use("/answers", answers);
+app.use("/feedback", feedback);
 
 app.set('views', './views');
 app.set("view engine", "ejs");
