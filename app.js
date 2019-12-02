@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect(process.env.MLAB_URL, { useNewUrlParser: true }).then(() => {
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to MongoDB.');
 }, err => {
     console.log('Connection to MongoDB failed :( ' + err);

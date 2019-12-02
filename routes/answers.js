@@ -4,6 +4,7 @@ const router = express.Router();
 const Answer = require("../models/answerModel")
 
 router.post("/", async (req, res) => {
+    console.log('Answers');
     try {
         var post = new Answer();
         post.schoolname = req.body.schoolname;

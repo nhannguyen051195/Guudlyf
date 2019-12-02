@@ -7,7 +7,7 @@ const surveyController = require('../controllers/surveyController');
 const surveyModel = require('../models/surveyModel');
 
 
-router.post('/', (req, res) => {
+router.post('/upload', (req, res) => {
    console.log('Survey router');
    surveyModel.create({
       schoolname: req.body.schoolname,

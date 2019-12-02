@@ -4,6 +4,7 @@ const router = express.Router();
 const Feedback = require("../models/feedbackModel")
 
 router.post("/", async (req, res) => {
+    console.log('Feedbacks');
     try {
         var post = new Feedback();
         post.schoolname = req.body.schoolname;
