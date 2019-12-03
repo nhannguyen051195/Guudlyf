@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 
 // Creating a survey schema and model
 const answers = new Schema({
-    schoolname: {type: String, enum: ['Kaisaniemen ala-aste', 'Meritalo', 'Keinutien ala-aste', 'Myllypuron peruskoulu']},
+    schoolname: {
+        type: String,
+        enum: ['Kaisaniemen ala-aste', 'Meritalo', 'Keinutien ala-aste', 'Myllypuron peruskoulu']
+    },
     schoolclass: {
         type: "String",
     },
