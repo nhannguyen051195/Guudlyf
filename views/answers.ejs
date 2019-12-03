@@ -2,8 +2,6 @@
 <title>Highchart</title>
 
 <style>
-    @media only screen and (max-width: 600px) {}
-
     .fixed-table-body {
         height: auto !important
     }
@@ -13,10 +11,10 @@
         height: 400px;
         max-width: 500px; */
         height: 400px;
-        width: 500px;
+        width: 425px;
 
 
-        padding: 20px;
+        padding: 10px;
         border: 1px solid #2AB7CA;
         border-radius: 50px;
         z-index: -1;
@@ -28,7 +26,7 @@
         grid-column: center-start / center-end;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-        grid-gap: 8.2rem;
+        grid-gap: 8rem;
         margin-bottom: 30px;
         /* height: calc(100vh - 100px);
         overflow: auto; */
@@ -44,6 +42,37 @@
         text-align: center;
         color: darkgrey;
         background-color: #F4F4F8
+    }
+
+    @media only screen and (max-width: 400px) {
+
+        .chart {
+
+            width: 350px;
+
+        }
+    }
+
+
+
+    @media only screen and (max-width: 1024px) {
+
+        .chart {
+
+            height: 400px;
+            width: 400px;
+
+        }
+    }
+
+    @media only screen and (min-width: 1025px) {
+
+        .chart {
+
+            height: 400px;
+            width: 500px;
+
+        }
     }
 </style>
 <!-- <div class="container">
@@ -150,7 +179,7 @@
 
 
     })
-  
+
 
 
 
