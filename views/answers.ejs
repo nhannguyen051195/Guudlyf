@@ -1,4 +1,5 @@
 <% include ./partials/base %>
+<title>Highchart</title>
 
 <style>
     @media only screen and (max-width: 600px) {}
@@ -6,8 +7,46 @@
     .fixed-table-body {
         height: auto !important
     }
+
+    .chart {
+        /*   min-width: 310px;
+        height: 400px;
+        max-width: 500px; */
+        height: 400px;
+        width: 500px;
+
+
+        padding: 20px;
+        border: 1px solid #2AB7CA;
+        border-radius: 50px;
+        z-index: -1;
+        margin: auto
+    }
+
+    #container {
+        width: 100%;
+        grid-column: center-start / center-end;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-gap: 8.2rem;
+        margin-bottom: 30px;
+        /* height: calc(100vh - 100px);
+        overflow: auto; */
+        position: absolute;
+        top: 100px;
+
+
+
+    }
+
+    .footer {
+        width: 100vw;
+        text-align: center;
+        color: darkgrey;
+        background-color: #F4F4F8
+    }
 </style>
-<div class="container">
+<!-- <div class="container">
 
     <div class="table-responsive">
         <table class="table table-condensed table-hover" style="display:none;" id="answers" data-sort-name="name"
@@ -23,22 +62,98 @@
             </tbody>
         </table>
     </div>
+</div> -->
+<div
+    style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; ;top:0; z-index: 1; opacity: 0.85; position: fixed;">
+    <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
 </div>
+<div id="container">
+</div>
+<!-- <footer style="bottom: 0px;width: 100%;text-align: center;color: #fff; background-color: #F4F4F8">Guudlyf 2019
+</footer> -->
+
 
 
 <p id="yy" style="display:none"><%= posts %></p>
 <script>
     var answers = JSON.parse(document.getElementById("yy").innerText);
     var $table = $('#answers')
-    console.log(answers);
+
+
+    const groupQuestion = (d) => {
+        let g = Object.entries(d.reduce((r, c) => (r[c.questionId] = [...r[c.questionId] || [], c], r), {}))
+        return g.reduce((r, c) => (r.children.push(
+            { name: c[0], children: c[1] }), r), { name: d[0], children: [] })
+    }
+
+    const groupAnswer = (d) => {
+        let g = Object.entries(d.reduce((r, c) => (r[c.answer] = [...r[c.answer] || [], c], r), {}))
+        return g.reduce((r, c) => (r.data.push(
+            { name: c[0], y: c[1].length / d.length * 100 }), r), { name: d[0].question, data: [] })
+    }
+
+    var chartData = groupQuestion(answers).children.map(question => {
+        return groupAnswer(question.children);
+    })
+    console.log(chartData);
+    // $table.bootstrapTable({ data: data1, })
+    //document.getElementById("answers").style.display = "table"
+
+
 
 
     var data1 = [];
     answers.map(item => {
         data1.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'question': item.question, 'answer': item.answer, 'date': moment(item.date).format('lll') })
     })
-    $table.bootstrapTable({ data: data1, })
-    document.getElementById("answers").style.display = "table"
+
+
+    chartData.map(item => {
+        var container = document.createElement("div");
+        container.className = 'chart'
+        document.getElementById('container').appendChild(container)
+
+
+        Highcharts.chart(container, {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: item.name
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: item.data
+
+            }]
+        });
+
+
+    })
+  
+
+
+
 
 
 
