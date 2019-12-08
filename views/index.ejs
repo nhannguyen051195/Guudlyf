@@ -587,7 +587,7 @@
             margin: 15px 0;
         }
          #mainContainer1{
-            overflow-y: hidden ;
+            overflow-y: auto ;
         } 
 
         .part2Container {
@@ -625,7 +625,7 @@
     }
 </style>
 <div class="outer">
-    <div class="outer">
+    <div class="outer" id="common-div-outer">
         <div class="container1" id="container2">
             <div class="common-div" id="welcome" style="height: 100vh;flex: 0 0 100%;">
                 <div style="display: flex; justify-content:center; height: 25vh;">
@@ -867,7 +867,7 @@
     }
     let prev = null
     goTo = (id, prevId) => {
-        $('.common-div').hide()
+        $('.common-div, #common-div-outer').hide()
         $('#' + id).show()
         $('#' + id)[0].scrollIntoView(true);
         prev = prevId
@@ -1089,7 +1089,7 @@
             part4btn2.addEventListener("click", function (e) {
                 sendAnswer(e)
                 if (index == 7) {
-                    $("#container2").show()
+                    $("#container2, #common-div-outer").show()
                     goTo("thankyou", null)
                     $("#container1").empty()
                     highlight("teacher", null)
