@@ -31,7 +31,7 @@
         /* height: calc(100vh - 100px);
         overflow: auto; */
         position: absolute;
-        top: 100px;
+        top: 200px;
 
 
 
@@ -96,6 +96,40 @@
     style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; ;top:0; z-index: 1; opacity: 0.85; position: fixed;">
     <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
 </div>
+
+<div style="
+    width: 100%;
+    top: 100px;
+    align-self: center;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+
+">
+    <div style="margin: 10px">
+        <label for="peopleGroup">People group:</label>
+        <select class="form-control" id="peopleGroup" style="width: 150px">
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+        </select>
+    </div>
+    <div style="margin: 10px">
+        <label for="schoolname">School name:</label>
+        <select class="form-control" id="schoolname">
+            <option value="Kaisaniemen ala-aste">Kaisaniemen ala-aste</option>
+            <option value="Keinutien ala-aste">Keinutien ala-aste</option>
+            <option value="Myllypuron peruskoulu">Myllypuron peruskoulu</option>
+            <option value="Meritalo">Meritalo</option>
+        </select>
+    </div>
+
+    <div>
+        <button style="margin-top: 42px" onclick="drawCharts()"
+                type="button" class="btn btn-success">Draw</button>
+    </div>
+
+
+</div>
 <div id="container">
 </div>
 <!-- <footer style="bottom: 0px;width: 100%;text-align: center;color: #fff; background-color: #F4F4F8">Guudlyf 2019
@@ -105,10 +139,10 @@
 
 <p id="yy" style="display:none"><%= posts %></p>
 <script>
-    var answers = JSON.parse(document.getElementById("yy").innerText);
+    var survey = JSON.parse(document.getElementById("yy").innerText);
     var $table = $('#answers')
 
-
+/*
     const groupQuestion = (d) => {
         let g = Object.entries(d.reduce((r, c) => (r[c.questionId] = [...r[c.questionId] || [], c], r), {}))
         return g.reduce((r, c) => (r.children.push(
@@ -124,79 +158,81 @@
     var chartData = groupQuestion(answers).children.map(question => {
         return groupAnswer(question.children);
     })
-    console.log(chartData);
+*/
+
+    var drawCharts = function(){
+
+        $('#container').empty()
+
+        let answers = survey.filter(item => item.peopleGroup == $("#peopleGroup").val() && item.schoolname == $("#schoolname").val());
+console.log(answers)
+        const groupQuestion = (d) => {
+            let g = Object.entries(d.reduce((r, c) => (r[c.questionId] = [...r[c.questionId] || [], c], r), {}))
+            return g.reduce((r, c) => (r.children.push(
+                { name: c[0], children: c[1] }), r), { name: d[0], children: [] })
+        }
+
+        const groupAnswer = (d) => {
+            let g = Object.entries(d.reduce((r, c) => (r[c.answer] = [...r[c.answer] || [], c], r), {}))
+            return g.reduce((r, c) => (r.data.push(
+                { name: c[0], y: c[1].length / d.length * 100 }), r), { name: d[0].question, data: [] })
+        }
+
+        var chartData = groupQuestion(answers).children.map(question => {
+            return groupAnswer(question.children);
+        })
+
+        var data1 = [];
+        answers.map(item => {
+            data1.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'question': item.question, 'answer': item.answer, 'date': moment(item.date).format('lll') })
+        })
+
+
+        chartData.map(item => {
+            console.log(item);
+            var container = document.createElement("div");
+            container.className = 'chart'
+            document.getElementById('container').appendChild(container)
+
+
+            Highcharts.chart(container, {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: item.name
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: item.data
+
+                }]
+            });
+        })
+
+    }
+    //console.log(chartData);
     // $table.bootstrapTable({ data: data1, })
     //document.getElementById("answers").style.display = "table"
-
-
-
-
-    var data1 = [];
-    answers.map(item => {
-        data1.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'question': item.question, 'answer': item.answer, 'date': moment(item.date).format('lll') })
-    })
-
-
-    chartData.map(item => {
-        var container = document.createElement("div");
-        container.className = 'chart'
-        document.getElementById('container').appendChild(container)
-
-
-        Highcharts.chart(container, {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            credits: {
-                enabled: false
-            },
-            title: {
-                text: item.name
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                    }
-                }
-            },
-            series: [{
-                name: 'Brands',
-                colorByPoint: true,
-                data: item.data
-
-            }]
-        });
-
-
-    })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
