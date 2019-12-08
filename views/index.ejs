@@ -269,7 +269,6 @@
         height: 50px
     }
 
-    @media only screen and (max-width: 600px) {}
 
     .chart {
         min-width: 310px;
@@ -393,7 +392,7 @@
         cursor: pointer;
         font-size: 18px;
         border: 1px solid;
-        ;
+        margin: 15px;
     }
 
     .mainContainer {
@@ -534,6 +533,10 @@
         width: 50px;
         height: 50px
     }
+    @media only screen and (max-width: 500px) {
+
+    }
+
 </style>
 <div class="outer">
     <div class="outer">
@@ -642,7 +645,7 @@
                     </div>
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center;">
-                    <div style="height: 100px;display: flex;width: 350px;justify-content: space-between;">
+                    <div style="display: flex;justify-content: space-between;">
                         <button onclick="highlight(this,'student')" class="group"><img style="width: 50px; "
                                 src="icons8-children-64.png"> Oppilas
                         </button>
@@ -934,10 +937,8 @@
             part3Container.style.backgroundColor = '#F4F4F8';
             part3Container.style.width = '80%';
             part3Container.style.padding = '15px';
-
             part3Container.style.display = 'flex';
             part3Container.style.justifyContent = 'center';
-            // part3Container.style.alignItems = 'center';
             part3Container.style.color = '#2AB7CA';
             part3Container.style.fontSize = '30px';
             part3Container.style.borderRadius = '50px';
