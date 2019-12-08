@@ -4,10 +4,12 @@ const router = express.Router();
 const Answer = require("../models/answerModel")
 
 router.post("/", async (req, res) => {
+    console.log('Answers');
     try {
         var post = new Answer();
         post.schoolname = req.body.schoolname;
         post.schoolclass = req.body.schoolclass;
+        post.chooseOption = req.body.chooseOption;
         post.questionId = req.body.questionId;
         post.question = req.body.question;
         post.answer = req.body.answer;

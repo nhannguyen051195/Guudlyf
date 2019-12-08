@@ -4,10 +4,12 @@ const router = express.Router();
 const Feedback = require("../models/feedbackModel")
 
 router.post("/", async (req, res) => {
+    console.log('Feedbacks');
     try {
         var post = new Feedback();
         post.schoolname = req.body.schoolname;
         post.schoolclass = req.body.schoolclass;
+        post.chooseOption = req.body.chooseOption;
         post.feedback = req.body.feedback;
         post.date = new Date();
         const savedPosts = await post.save()
