@@ -533,6 +533,14 @@
         width: 50px;
         height: 50px
     }
+
+    @media only screen and (device-width: 600px) and (orientation: portrait) {
+        /* css rules */
+        
+
+    }
+
+
 </style>
 <div class="outer">
     <div class="outer">
@@ -679,7 +687,7 @@
                     <div
                         style="    padding: 15px;
                         text-align:center;display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 30px; height: 60%;">
-                        <h5>Kiitos vastauksista! Halutessasi voit jättää alle avoimen palautteen.</h5>
+                        <h5>Halutessasi voit jättää alle avoimen palautteen.</h5>
                     </div>
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh;">
@@ -823,13 +831,13 @@
     });
     var sendAnswer = function (e) {
         var data = {
-
             "answerId": e.target.answerId,
             "answer": e.target.answer,
             "questionId": e.target.questionId,
             "question": e.target.question,
             "schoolname": $("#schoolname").val(),
-            "schoolclass": $("#schoolclass").val()
+            "schoolclass": $("#schoolclass").val(),
+            "peopleGroup": $("#peopleGroup").val()
         }
         $.ajax({
             type: "POST",

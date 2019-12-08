@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const answers = new Schema({
     schoolname: {type: String, enum: ['Kaisaniemen ala-aste', 'Meritalo', 'Keinutien ala-aste', 'Myllypuron peruskoulu']},
     schoolclass: String,
-    chooseOption: String,
+    peopleGroup: String,
     answerId: String,
     answer: String,
     questionId: String,
