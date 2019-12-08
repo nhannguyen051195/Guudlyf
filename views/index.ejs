@@ -3,6 +3,7 @@
 
 <style>
     @media only screen and (max-width: 600px) {}
+
     .chart {
         min-width: 310px;
         height: 400px;
@@ -642,10 +643,10 @@
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center;">
                     <div style="height: 100px;display: flex;width: 350px;justify-content: space-between;">
-                        <button onclick="highlight(this)" class="group"><img style="width: 50px; "
+                        <button onclick="highlight(this,'student')" class="group"><img style="width: 50px; "
                                 src="icons8-children-64.png"> Oppilas
                         </button>
-                        <button onclick="highlight(this)" class="group"><img style="width: 60px; "
+                        <button onclick="highlight(this,'teacher')" class="group"><img style="width: 60px; "
                                 src="icons8-teacher-100.png">Henkilökunta
                         </button>
                     </div>
@@ -751,6 +752,7 @@
 
 <script>
     var questions = JSON.parse(document.getElementById("yy").innerText);
+    var peopleGroup = null
 
     sendFeedback = () => {
         goTo('thankyou', null)
@@ -787,11 +789,12 @@
         }
 
     }
-    highlight = (e) => {
+    highlight = (e, input) => {
         $('.group').css({ "box-shadow": "", "border": "1px solid" })
         $(e).css({ "box-shadow": "0 0 40px rgb(42, 183, 202)", "border": "2px solid" })
         $("#startsurvey").prop("disabled", false)
         $("#startsurvey").css({ "background-color": "#2AB7CA", "color": "white" })
+        peopleGroup = input
 
     }
 
@@ -828,7 +831,8 @@
             "questionId": e.target.questionId,
             "question": e.target.question,
             "schoolname": $("#schoolname").val(),
-            "schoolclass": $("#schoolclass").val()
+            "schoolclass": $("#schoolclass").val(),
+            peopleGroup
         }
         $.ajax({
             type: "POST",
