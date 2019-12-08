@@ -867,7 +867,7 @@
     }
     let prev = null
     goTo = (id, prevId) => {
-        $('.common-div, #common-div-outer').hide()
+        $('.common-div').hide()
         $('#' + id).show()
         $('#' + id)[0].scrollIntoView(true);
         prev = prevId
@@ -1148,5 +1148,6 @@
             })
         })
         $(document).scrollTo('#content');
+        $("#common-div-outer").hide()
     }
 </script>
