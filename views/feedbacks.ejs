@@ -13,7 +13,7 @@
         <table class="table table-condensed table-hover" style="display:none;" id="feedbacks" data-sort-name="name"
             data-pagination="true" data-search="true" data-sortable="true">
             <thead>
-                <tr> 
+                <tr>
                     <th data-field="feedback" data-sortable="true">Feedback</th>
                     <th data-field="date" data-sortable="true">Date</th>
                 </tr>
@@ -36,9 +36,9 @@
     answers.map(item => {
         data1.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'feedback': item.feedback, 'date': moment(item.date).format('lll') })
     })
-    
-        $table.bootstrapTable({ data: data1, })
-        document.getElementById("feedbacks").style.display = "table"
+
+    $table.bootstrapTable({ data: data1, })
+    document.getElementById("feedbacks").style.display = "table"
 
 
 
