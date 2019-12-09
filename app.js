@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect(process.env.MLAB_URL, { useNewUrlParser: true }).then(() => {
+mongoose.connect("mongodb+srv://guudlyf:guudlyf123@cluster0-wzmbn.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to MongoDB.');
 }, err => {
     console.log('Connection to MongoDB failed :( ' + err);
@@ -21,11 +21,9 @@ const feedback = require("./routes/feedback");
 const manageQuestions = require("./routes/manageQuestions");
 
 
-app.get("/", questionsList)
-app.use("/answers", answers)
-app.use("/feedback", feedback)
-app.use("/questions", manageQuestions)
-
+app.get("/", questionsList);
+app.use("/answers", answers);
+app.use("/feedback", feedback);
 
 app.set('views', './views');
 app.set("view engine", "ejs");

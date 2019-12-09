@@ -6,8 +6,9 @@ const Schema = mongoose.Schema;
 const feedbackSchema = new Schema({
     schoolname: {type: String, enum: ['Kaisaniemen ala-aste', 'Meritalo', 'Keinutien ala-aste', 'Myllypuron peruskoulu']},
     schoolclass: String,
-    feedback: { type: "String" },
-    date: { type: Date },
+    peopleGroup: String,
+    feedback: String,
+    date: Date
 });
 
 module.exports = mongoose.model('feedback', feedbackSchema);

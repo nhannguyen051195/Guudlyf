@@ -1,3 +1,4 @@
+
 let data = [{
     "questionId": "1",
     "question": "Minkälaiseksi koet opetustilan lämpötilan?",
