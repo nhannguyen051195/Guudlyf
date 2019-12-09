@@ -540,17 +540,26 @@
 
 
     @media only screen and (max-width: 500px) {
-        .group{
-            width:130px;
+        .helsinki-logo{
+            height: 20vh !important;
+            padding-top: 30px !important;
+        }
+      
+
+        .group {
+            width: 130px;
             height: 130px;
         }
-         #welcome h5{
+
+        #welcome h5 {
             font-size: 1rem;
-        } 
-        .who-question{
+        }
+
+        .who-question {
             border-radius: 30px !important;
             padding: 10px !important;
         }
+
         .common-div {
             width: 100%;
         }
@@ -573,25 +582,29 @@
         .mainContainer {
             width: 100%;
         }
-        .part3{
+
+        .part3 {
             height: 50vh !important;
             overflow: auto;
         }
 
         .part1,
-        .part2, .part3{
+        .part2,
+        .part3 {
             height: auto !important;
         }
-        .part1 div{
+
+        .part1 div {
             height: 80px !important;
         }
 
         .part2 {
             margin: 15px 0;
         }
-         #mainContainer1{
-            overflow-y: auto ;
-        } 
+
+        #mainContainer1 {
+            overflow-y: auto;
+        }
 
         .part2Container {
             font-size: 18px !important;
@@ -609,17 +622,21 @@
             flex-direction: column-reverse;
             align-items: center;
         }
-        .part4 h5{
+
+        .part4 h5 {
             display: none;
         }
-        .who-question{
+
+        .who-question {
             font-size: 22px !important;
         }
-        .part4Container{
+
+        .part4Container {
             align-items: start !important;
             height: auto !important;
         }
-        .part4{
+
+        .part4 {
             align-items: start !important;
             margin-top: 15px;
             margin-bottom: 30px;
@@ -632,7 +649,7 @@
     <div class="outer" id="common-div-outer">
         <div class="container1" id="container2">
             <div class="common-div" id="welcome" style="height: 100vh;flex: 0 0 100%;">
-                <div style="display: flex; justify-content:center; height: 25vh;">
+                <div class="helsinki-logo" style="display: flex; justify-content:center; height: 25vh;">
                     <div style="width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
                         <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
                         <button onclick="goTo('setting','welcome')"
@@ -667,7 +684,7 @@
 
             <div class="common-div" id="setting" style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
                 <div style="height: 25vh; ">
-                    <div
+                    <div class="helsinki-logo"
                         style="height:100px;background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;">
                         <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
                         <button onclick="goBackTo()"
@@ -712,13 +729,14 @@
                 <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
                     <div style="height: 100px;display: flex;justify-content: space-between;">
                     </div>
-                    <h6 style="position: absolute;bottom: 5px;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
+                    <h6 style="position: absolute;bottom: 5px;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf
+                        2019
                     </h6>
                 </div>
             </div>
 
             <div class="common-div" id='who' style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
-                <div style="height: 25vh;">
+                <div style="height: 25vh;" class="helsinki-logo">
                     <div
                         style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
                         <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
@@ -729,7 +747,8 @@
                     </div>
                 </div>
                 <div style="display: flex; justify-content:center; height: 25vh;">
-                    <div class="who-question" style="height:50%;text-align:center;display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 50px;color: #2AB7CA;font-size: 30px;">
+                    <div class="who-question"
+                        style="height:50%;text-align:center;display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 50px;color: #2AB7CA;font-size: 30px;">
                         Oletko oppilas vaihenkilökuntaa?
                     </div>
                 </div>
@@ -753,13 +772,14 @@
                             class='btn button'>Seuraava</button>
 
                     </div>
-                    <h6 style="position: absolute;bottom: 5px;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
+                    <h6 style="position: absolute;bottom: 5px;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf
+                        2019
                     </h6>
                 </div>
             </div>
 
             <div class="common-div" id='feedback' style="height: 100vh;flex: 0 0 100%; background-color: #E6E6EA;">
-                <div style="height: 25vh; ">
+                <div style="height: 25vh; " class="helsinki-logo">
                     <div
                         style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
                         <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
@@ -789,14 +809,15 @@
                         <button style="margin: 10px;" onclick="sendFeedback()" class='btn button'>Lähetä</button>
 
                     </div>
-                    <h6 style="position: absolute;bottom: 5px;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf 2019
+                    <h6 style="position: absolute;bottom: 5px;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf
+                        2019
                     </h6>
                 </div>
 
 
             </div>
             <div class="common-div" id='thankyou' style="height: 100vh;flex: 0 0 100%;">
-                <div style="display: flex; justify-content:center; height: 25vh;">
+                <div class="helsinki-logo" style="display: flex; justify-content:center; height: 25vh;">
                     <div style="width: 100%;justify-content: center;display: flex; position: relative;height: 100px;">
                         <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
 
@@ -828,7 +849,7 @@
 
             </div>
         </div>
-    
+
     </div>
 
     <div class="outer" id="content">
@@ -1066,7 +1087,7 @@
             part4Container.style.justifyContent = 'space-between';
             part4Container.style.alignItems = 'center';
             part4Container.style.height = '100px';
-            part4Container.className='part4Container'
+            part4Container.className = 'part4Container'
 
             var part4btn1 = document.createElement("button")
             part4btn1.className = "btn button";
