@@ -18,10 +18,14 @@ mongoose.connect(process.env.MLAB_URL, { useNewUrlParser: true }).then(() => {
 const questionsList = require("./routes/questions");
 const answers = require("./routes/answers");
 const feedback = require("./routes/feedback");
+const manageQuestions = require("./routes/manageQuestions");
+
 
 app.get("/", questionsList)
 app.use("/answers", answers)
 app.use("/feedback", feedback)
+app.use("/questions", manageQuestions)
+
 
 app.set('views', './views');
 app.set("view engine", "ejs");

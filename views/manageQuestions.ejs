@@ -1,0 +1,58 @@
+<% include ./partials/base %>
+
+
+<script>
+            
+    var iconSelect;
+    var selectedText;
+
+    window.onload = function(){
+        $(".component-icon").hide()
+
+        
+        selectedText = document.getElementById('selected-text');
+        
+        document.getElementById('my-icon-select').addEventListener('changed', function(e){
+           selectedText.value = iconSelect.getSelectedValue();
+           console.log(iconSelect.getSelectedValue());
+           
+        });
+        
+        iconSelect = new IconSelect("my-icon-select");
+
+        var icons = [];
+        icons.push({'iconFilePath':'icons8-children-64.png', 'iconValue':'1'});
+        icons.push({'iconFilePath':'icons-1.png', 'iconValue':'2'});
+        icons.push({'iconFilePath':'icons8-crying-100.png', 'iconValue':'3'});
+        icons.push({'iconFilePath':'icons8-fire-64.png', 'iconValue':'4'});
+        icons.push({'iconFilePath':'icons8-happy-100.png', 'iconValue':'5'});
+        icons.push({'iconFilePath':'icons8-in-love-64.png', 'iconValue':'6'});
+        icons.push({'iconFilePath':'icons8-lol-100.png', 'iconValue':'7'});
+        icons.push({'iconFilePath':'icons8-neutral-100.png', 'iconValue':'8'});
+        icons.push({'iconFilePath':'icons8-sad-100.png', 'iconValue':'9'});
+        icons.push({'iconFilePath':'icons8-silent-64.png', 'iconValue':'10'});
+        icons.push({'iconFilePath':'icons8-snowflake-64.png', 'iconValue':'11'});
+        icons.push({'iconFilePath':'icons8-teacher-100.png', 'iconValue':'12'});
+      
+        iconSelect.refresh(icons);
+        
+
+
+    };
+        
+    </script>
+    
+</head>
+<body>
+    
+    <h2>Icon/Image Select: Basic Example (Javascript)</h2>
+    <div>
+            Icon/Image Select: Nano Example (Javascript)
+            <div id="my-icon-select"></div>
+    
+        </div>
+    
+    
+    <input type="text" id="selected-text" name="selected-text" style="width:65px;">
+    
+</body>

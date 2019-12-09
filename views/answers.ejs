@@ -7,7 +7,7 @@
         height: auto !important
     }
 </style>
-<div class="container">
+<!-- <div class="container">
 
     <div class="table-responsive">
         <table class="table table-condensed table-hover" style="display:none;" id="answers" data-sort-name="name"
@@ -23,21 +23,86 @@
             </tbody>
         </table>
     </div>
-</div>
+</div> -->
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
 
 
 <p id="yy" style="display:none"><%= posts %></p>
 <script>
     var answers = JSON.parse(document.getElementById("yy").innerText);
     var $table = $('#answers')
+    //console.log(answers);
+    var question1 = answers.filter(ques => ques.questionId == 1)
 
 
-    var data1 = [];
-    answers.map(item => {
-        data1.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'question': item.question, 'answer': item.answer, 'date': moment(item.date).format('lll') })
-    })
+
+    /* 
+    
+        var data1 = [];
+        answers.map(item => {
+            data1.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'question': item.question, 'answer': item.answer, 'date': moment(item.date).format('lll') })
+        })
         $table.bootstrapTable({ data: data1, })
-        document.getElementById("answers").style.display = "table"
+        document.getElementById("answers").style.display = "table" */
+    var result = _(answers)
+        .groupBy('questionId')
+        .map((group, name) =>
+            ({ name, children: _.map(group, ({ content: question, answers }) => ({ question:group.question, answers })) }))
+        .value(),
+        final = [{ name: "Children Array", children: result }];
+
+    console.log(final);
+
+
+
+
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        title: {
+            text: 'Browser<br>shares<br>2017',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 60
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: true,
+                    distance: -50,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }
+                },
+                startAngle: -90,
+                endAngle: 90,
+                center: ['50%', '75%'],
+                size: '110%'
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            innerSize: '50%',
+            data: [
+                ['Chrome', 58.9],
+                ['Firefox', 13.29],
+                ['Internet Explorer', 13],
+                ['Edge', 3.78],
+                ['Safari', 3.42],
+
+            ]
+        }]
+    });
+
 
 
 
