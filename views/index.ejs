@@ -557,7 +557,7 @@
             height: 130px;
         }
 
-        #welcome h5 {
+        #welcome h5, #thankyou h5 {
             font-size: 1rem;
         }
 
@@ -654,6 +654,7 @@
         }
         .part1 img{
                 height: 50px !important;
+                margin-bottom: 10px;
         }
     }
 </style>
@@ -1107,6 +1108,8 @@
             part4btn1.addEventListener("click", function () {
                 if (index == 0) {
                     goTo("who", null)
+                    $("#common-div-outer").show()
+
 
                 }
                 else {
