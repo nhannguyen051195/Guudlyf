@@ -17,23 +17,18 @@ router.post("/", async (req, res) => {
     }
     catch (err) {
         res.json({ message: err })
-
     }
-})
+});
 
 router.get("/", async (req, res) => {
     try {
-       
-
         const posts = await Feedback.find()
         res.render("feedbacks", {
             posts: JSON.stringify(posts)
         });
-    
     }
     catch (err) {
         res.json({ message: err })
-
     }
 })
 module.exports = router;
