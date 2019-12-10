@@ -1,6 +1,5 @@
 <% include ./partials/base %>
 <title>Highchart</title>
-
 <style>
     .fixed-table-body {
         height: auto !important
@@ -44,7 +43,26 @@
         background-color: #F4F4F8
     }
 
+    @media only screen and (max-width: 500px) {
+
+        .part1,
+        .part2,
+        .part3 {
+            position: static !important;
+        }
+
+        .part2 {
+            flex-direction: column;
+        }
+        .part2 button{
+            margin:10px !important
+        }
+
+       
+    }
+
     @media only screen and (max-width: 400px) {
+
 
         .chart {
 
@@ -75,37 +93,13 @@
         }
     }
 </style>
-<!-- <div class="container">
-
-    <div class="table-responsive">
-        <table class="table table-condensed table-hover" style="display:none;" id="answers" data-sort-name="name"
-            data-pagination="true" data-search="true" data-sortable="true">
-            <thead>
-                <tr>
-                    <th data-field="question" data-sortable="true">Question</th>
-                    <th data-field="answer" data-sortable="true">Answer</th>
-                    <th data-field="date" data-sortable="true">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
-</div> -->
-<div
+<div class="part1"
     style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; ;top:0; z-index: 1; opacity: 0.85; position: fixed;">
     <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
 </div>
 
-<div style="
-    width: 100%;
-    top: 100px;
-    align-self: center;
-    justify-content: center;
-    display: flex;
-    position: absolute;
-
-">
+<div class="part2"
+    style="width: 100%;top: 100px;align-self: center;justify-content: center;display: flex;position: absolute;">
     <div style="margin: 10px">
         <label for="peopleGroup">People group:</label>
         <select class="form-control" id="peopleGroup" style="width: 150px">
@@ -122,50 +116,27 @@
             <option value="Meritalo">Meritalo</option>
         </select>
     </div>
-
     <div>
-        <button style="margin-top: 42px" onclick="drawCharts()"
-                type="button" class="btn btn-success">Draw</button>
+        <button style="margin-top: 42px" onclick="drawCharts()" type="button" class="btn btn-success">Draw chart <i
+                class="fa fa-pie-chart" aria-hidden="true"></i>
+        </button>
     </div>
-
-
 </div>
-<div id="container">
+<div class="part3" id="container">
 </div>
-<!-- <footer style="bottom: 0px;width: 100%;text-align: center;color: #fff; background-color: #F4F4F8">Guudlyf 2019
-</footer> -->
+
 
 
 
 <p id="yy" style="display:none"><%= posts %></p>
 <script>
-    var survey = JSON.parse(document.getElementById("yy").innerText);
+    var surveys = JSON.parse(document.getElementById("yy").innerText);
     var $table = $('#answers')
 
-/*
-    const groupQuestion = (d) => {
-        let g = Object.entries(d.reduce((r, c) => (r[c.questionId] = [...r[c.questionId] || [], c], r), {}))
-        return g.reduce((r, c) => (r.children.push(
-            { name: c[0], children: c[1] }), r), { name: d[0], children: [] })
-    }
-
-    const groupAnswer = (d) => {
-        let g = Object.entries(d.reduce((r, c) => (r[c.answer] = [...r[c.answer] || [], c], r), {}))
-        return g.reduce((r, c) => (r.data.push(
-            { name: c[0], y: c[1].length / d.length * 100 }), r), { name: d[0].question, data: [] })
-    }
-
-    var chartData = groupQuestion(answers).children.map(question => {
-        return groupAnswer(question.children);
-    })
-*/
-
-    var drawCharts = function(){
-
+    var drawCharts = function () {
         $('#container').empty()
-
-        let answers = survey.filter(item => item.peopleGroup == $("#peopleGroup").val() && item.schoolname == $("#schoolname").val());
-console.log(answers)
+        let answers = surveys.filter(item => item.peopleGroup == $("#peopleGroup").val() && item.schoolname == $("#schoolname").val());
+        console.log(answers)
         const groupQuestion = (d) => {
             let g = Object.entries(d.reduce((r, c) => (r[c.questionId] = [...r[c.questionId] || [], c], r), {}))
             return g.reduce((r, c) => (r.children.push(
@@ -186,6 +157,14 @@ console.log(answers)
         answers.map(item => {
             data1.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'question': item.question, 'answer': item.answer, 'date': moment(item.date).format('lll') })
         })
+        if (!chartData.length) {
+            var container = document.createElement("div");
+            container.style.padding = '15px'
+            container.innerHTML = 'No data available!'
+            document.getElementById('container').appendChild(container)
+            return
+        }
+
 
 
         chartData.map(item => {
@@ -231,8 +210,4 @@ console.log(answers)
         })
 
     }
-    //console.log(chartData);
-    // $table.bootstrapTable({ data: data1, })
-    //document.getElementById("answers").style.display = "table"
-
 </script>

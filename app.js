@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }).then(() => {
+mongoose.connect("mongodb+srv://guudlyf:guudlyf123@cluster0-wzmbn.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true }).then(() => {
     console.log('Connected successfully to MongoDB.');
 }, err => {
     console.log('Connection to MongoDB failed :( ' + err);
@@ -18,6 +18,8 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }).then(() =
 const questionsList = require("./routes/questions");
 const answers = require("./routes/answers");
 const feedback = require("./routes/feedback");
+const manageQuestions = require("./routes/manageQuestions");
+
 
 function redirectUnmatched(req, res) {
     res.redirect("http://helsinkigoodlife.herokuapp.com/");
