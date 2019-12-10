@@ -20,7 +20,6 @@ const answers = require("./routes/answers");
 const feedback = require("./routes/feedback");
 const manageQuestions = require("./routes/manageQuestions");
 
-
 function redirectUnmatched(req, res) {
     res.redirect("http://helsinkigoodlife.herokuapp.com/");
 }
@@ -28,9 +27,9 @@ function redirectUnmatched(req, res) {
 app.get("/", questionsList);
 
 // Middlewares
-app.use(redirectUnmatched);
 app.use("/answers", answers);
 app.use("/feedback", feedback);
+app.use(redirectUnmatched);
 
 app.set('views', './views');
 app.set("view engine", "ejs");
