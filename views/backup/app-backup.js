@@ -4,8 +4,8 @@ const express = require("express");
 const app = express();
 const request = require('request');
 const mongoose = require('mongoose');
-const surveyRouter = require('./routes/surveyRouter');
-const surveyModel = require('./models/surveyModel');
+const surveyRouter = require('../../routes/surveyRouter');
+const surveyModel = require('../../models/surveyModel');
 const path = require('path');
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -77,8 +77,8 @@ app.post("/upload", function (req, res) {
 
 
 var data;
-const questionsList = require("./routes/questions")
-const answers = require("./routes/answers")
+const questionsList = require("../../routes/questions")
+const answers = require("../../routes/answers")
 
 
 //app.get("/getData", questionsList)

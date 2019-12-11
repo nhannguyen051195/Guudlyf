@@ -1,6 +1,5 @@
 <% include ./partials/base %>
 <title>Main page</title>
-
 <style>
     .answers {
         display: flex;
@@ -295,6 +294,7 @@
         }
     }
 </style>
+<body>
 <div class="outer">
     <div class="outer" id="common-div-outer">
         <div class="container1" id="container2">
@@ -501,13 +501,9 @@
     </div>
 </div>
 <p id="questions" style="display:none"><%= posts %></p>
-
-
 <button style="display: none;" class="lefty" id="left-button"><i class="fa fa-chevron-left"></i></button>
-
-
 <button style="display: none;" class="righty" id="right-button"><i class="fa fa-chevron-right"></i></button>
-
+</body>
 <script>
     var questions = JSON.parse(document.getElementById("questions").innerText);
     var peopleGroup = null
@@ -816,3 +812,5 @@
         $("#common-div-outer").hide()
     }
 </script>
+<% include ./partials/footer %>
+

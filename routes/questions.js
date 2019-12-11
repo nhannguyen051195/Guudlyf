@@ -1,7 +1,7 @@
 'use strict';
 const express = require("express");
 const router = express.Router();
-const Post = require("../models/testModel");
+const Post = require("../models/newQuestionModel");
 
 router.post("/", async (req, res) => {
     try {

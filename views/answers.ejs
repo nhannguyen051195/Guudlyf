@@ -93,6 +93,7 @@
         }
     }
 </style>
+<body>
 <div class="part1"
     style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; ;top:0; z-index: 1; opacity: 0.85; position: fixed;">
     <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
@@ -129,6 +130,7 @@
 
 
 <p id="yy" style="display:none"><%= posts %></p>
+</body>
 <script>
     var surveys = JSON.parse(document.getElementById("yy").innerText);
     var $table = $('#answers')
@@ -211,3 +213,5 @@
 
     }
 </script>
+
+<% include ./partials/footer %>

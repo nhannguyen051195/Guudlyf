@@ -1,37 +1,34 @@
 <% include ./partials/base %>
 
 <style>
-    @media only screen and (max-width: 600px) {}
-
     .fixed-table-body {
         height: auto !important
     }
 </style>
-<div
-style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; ;top:0; z-index: 1; opacity: 0.85; position: fixed;">
-<img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
-</div>
-<div class="" style="position: absolute; top: 100px;display: flex;justify-content: center;width: 100%;padding: 0 30px;">
-    <div class="table-responsive">
-        <table class="table table-condensed table-hover" style="display:none;" id="feedbacks" data-sort-name="name"
-            data-pagination="true" data-search="true" data-sortable="true">
-            <thead>
-                <tr>
-                    <th data-field="feedback" data-sortable="true">Feedback</th>
-                    <th data-field="date" data-sortable="true">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+
+<body>
+    <div
+        style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; ;top:0; z-index: 1; opacity: 0.85; position: fixed;">
+        <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
     </div>
-</div>
-
-
-<p id="yy" style="display:none"><%= posts %></p>
-
-
-
+    <div class=""
+        style="position: absolute; top: 100px;display: flex;justify-content: center;width: 100%;padding: 0 30px;">
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover" style="display:none;" id="feedbacks" data-sort-name="name"
+                data-pagination="true" data-search="true" data-sortable="true">
+                <thead>
+                    <tr>
+                        <th data-field="feedback" data-sortable="true">Feedback</th>
+                        <th data-field="date" data-sortable="true">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <p id="yy" style="display:none"><%= posts %></p>
+</body>
 <script>
     var answers = JSON.parse(document.getElementById("yy").innerText);
     var $table = $('#feedbacks')
@@ -43,19 +40,5 @@ style="background-color: #F4F4F8;width: 100%;justify-content: center;display: fl
     $table.bootstrapTable({ data: data1, })
     document.getElementById("feedbacks").style.display = "table"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
+<% include ./partials/footer %>
