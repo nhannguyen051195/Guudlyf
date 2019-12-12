@@ -8,8 +8,8 @@ and 5 different choices with emoji faces to answer and an open feedback in the e
 for comments. The survey has a school name and class that you can set up and whether you are a student or
 a staff. There is also an easy mode designed for first graders to help them answer the survey.
 
-Demo: https://helsinkigoodlife.herokuapp.com/
-Answers results: https://helsinkigoodlife.herokuapp.com/answers
+Demo: https://helsinkigoodlife.herokuapp.com/ <br>
+Answers results: https://helsinkigoodlife.herokuapp.com/answers <br>
 Feedback results: https://helsinkigoodlife.herokuapp.com/feedbacks
   
   
