@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node app.js",
     "test": "jest",
-    "build": "ng build"
   },
   "engines": {
     "node": "12.9.0",
