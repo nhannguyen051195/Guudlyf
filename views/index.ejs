@@ -130,6 +130,10 @@
         border: 1px solid;
         margin: 15px;
     }
+    .part1 img{
+        height: 60px;
+        margin: 10px;
+    }
 
 
 
@@ -185,6 +189,7 @@
     .part2 {
         height: 25vh;
     }
+    
 
     .common-div {
         height: 100vh;
@@ -252,14 +257,15 @@
         .part3 {
             height: auto !important;
         }
+        .part1 img{
+        height: 30px !important;
+    }
 
         .part2 {
             margin: 15px 0;
         }
 
-        #mainContainer1 {
-            overflow-y: auto;
-        }
+       
 
         .part2Container {
             font-size: 18px !important;
@@ -640,7 +646,7 @@
             part1Container.style.display = 'flex';
             part1Container.style.justifyContent = 'center';
             part1Container.style.position = 'relative';
-            part1Container.style.height = '100px';
+            part1Container.style.height = 'auto';
 
             var part1Img = document.createElement('img');
             part1Img.style.height = '60px'
