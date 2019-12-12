@@ -5,8 +5,9 @@
         display: flex;
         justify-content: space-around;
     }
-    #welcome_page{
-        display:block
+
+    #welcome_page {
+        display: block
     }
 
     .mainContainer {
@@ -165,6 +166,54 @@
         height: 0;
     }
 
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 8px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked+.slider {
+        background-color: #2AB7CA;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2AB7CA;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(59px);
+        -ms-transform: translateX(59px);
+        transform: translateX(59px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
 
     .button-answer {
         display: flex;
@@ -215,16 +264,18 @@
         height: 25vh;
         position: relative;
     }
-    .team-logo{
+
+    .team-logo {
         position: absolute;
-        bottom:0;
-        width:100%;
+        bottom: 0;
+        width: 100%;
         text-align: center;
     }
 
 
     @media only screen and (max-width: 500px) {
-       /*  .team-logo{
+
+        /*  .team-logo{
             display: none;
         } */
         .group {
@@ -316,7 +367,7 @@
             height: auto !important;
         }
 
-      /*   .part4 {
+        /*   .part4 {
             align-items: start !important;
             margin-top: 15px;
             margin-bottom: 30px;
@@ -358,11 +409,11 @@
                             <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#2AB7CA">
                             </path>
                         </svg>
-                        <h6 class="team-logo"  style="color: white;">Guudlyf 2019
-                            </h6>
-                     
+                        <h6 class="team-logo" style="color: white;">Guudlyf 2019
+                        </h6>
+
                     </div>
-                
+
                 </div>
 
 
@@ -371,7 +422,7 @@
                     <div style="height: 25vh; ">
                         <div class="w-100 justify-content-center d-flex position-relative"
                             style="height:100px;background-color: #F4F4F8;">
-                            <img style="height: 60px; margin-top: 10px;"src="HELSINKI_Tunnus_MUSTA.png" alt="">
+                            <img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
                             <button onclick="goBackTo()" class="position-absolute h-100 d-flex align-items-center"
                                 style="background-color: transparent; border:0px; right: 10px;font-size: 30px; cursor: pointer;">
                                 X</button>
@@ -447,7 +498,8 @@
                         </div>
 
                     </div>
-                    <div class="position-relative"  style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
+                    <div class="position-relative"
+                        style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
                         <div style="width:80%;height: 100px;display: flex;;justify-content: space-between;">
                             <button style="margin: 10px;" onclick="goTo('welcome_page',null)"
                                 class='btn button'>Edellinen</button>
@@ -456,13 +508,13 @@
                                 class='btn button'>Seuraava</button>
 
                         </div>
-                     
-                     
+
+
                     </div>
-                    <h6  class="team-logo" style="color: #BBBBBB;">Guudlyf
-                            2019
-                        </h6>
-                  
+                    <h6 class="team-logo" style="color: #BBBBBB;">Guudlyf
+                        2019
+                    </h6>
+
                 </div>
 
                 <div class="common-div" id='feedback'>
@@ -489,15 +541,15 @@
                             style="display: flex;justify-content: center;align-items: center;background-color: #F4F4F8;width: 80%;border-radius: 30px;color: #2AB7CA;font-size: 20px;padding: 15px;border: #F4F4F8;"
                             placeholder="Kouluruoka oli tänään superhyvää!"></textarea>
                     </div>
-                    <div style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
+                    <div class="position-relative"
+                        style="display: flex; justify-content:center; height: 25vh; align-items: center; ">
                         <div style="height: 100px;display: flex;width: 80%;justify-content: space-between;">
                             <button style="margin: 10px;" onclick="goTo('welcome_page',null)"
                                 class='btn button'>Edellinen</button>
                             <button style="margin: 10px;" onclick="sendFeedback()" class='btn button'>Lähetä</button>
 
                         </div>
-                        <h6  class="team-logo"style="position: fixed;bottom: 12px;width: 100%;text-align: center;color: #BBBBBB;">Guudlyf
-                            2019
+                        <h6 class="team-logo" style="color: #BBBBBB">Guudlyf 2019
                         </h6>
                     </div>
 
@@ -531,9 +583,8 @@
                             <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#2AB7CA">
                             </path>
                         </svg>
-                        <h6 class="team-logo" style="position: fixed;bottom: 12px;width: 100%;text-align: center;color: white; left:0">
-                            Guudlyf
-                            2019</h6>
+                        <h6 class="team-logo" style="color: white;">Guudlyf 2019
+                        </h6>
 
                     </div>
 
@@ -670,12 +721,12 @@
             part1.className = 'part1 '
 
             var part1Container = document.createElement("div");
-       /*      part1Container.style.backgroundColor = '#F4F4F8';
-            part1Container.style.width = '100%';
-            part1Container.style.display = 'flex';
-            part1Container.style.justifyContent = 'center';
-            part1Container.style.position = 'relative';
-            part1Container.style.height = 'auto'; */
+            /*      part1Container.style.backgroundColor = '#F4F4F8';
+                 part1Container.style.width = '100%';
+                 part1Container.style.display = 'flex';
+                 part1Container.style.justifyContent = 'center';
+                 part1Container.style.position = 'relative';
+                 part1Container.style.height = 'auto'; */
             part1Container.style.backgroundColor = '#F4F4F8';
             part1Container.className = 'w-100 justify-content-center d-flex position-relative'
 
@@ -812,12 +863,12 @@
 
             var h6 = document.createElement("h6")
             h6.innerHTML = "Guudlyf 2019";
-            h6.className="team-logo"
+            h6.className = "team-logo"
             h6.style.color = '#BBBBBB';
 
 
             part4.appendChild(part4Container)
-           // part4.appendChild(h6)
+            // part4.appendChild(h6)
 
             mainContainer.appendChild(part1)
             mainContainer.appendChild(part2)
