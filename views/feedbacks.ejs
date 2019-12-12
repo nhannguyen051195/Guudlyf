@@ -1,37 +1,62 @@
-<% include ./partials/base %>
+<% include ./partials/header %>
 
 <style>
-    @media only screen and (max-width: 600px) {}
-
     .fixed-table-body {
         height: auto !important
     }
+
+
+    @media only screen and (max-width: 500px) {
+
+        .part1 {
+            position: static !important;
+        }
+
+
+
+    }
 </style>
-<div
-style="background-color: #F4F4F8;width: 100%;justify-content: center;display: flex; ;top:0; z-index: 1; opacity: 0.85; position: fixed;">
-<img style="height: 60px; margin-top: 10px;" src="HELSINKI_Tunnus_MUSTA.png" alt="">
-</div>
-<div class="" style="position: absolute; top: 100px;display: flex;justify-content: center;width: 100%;padding: 0 30px;">
-    <div class="table-responsive">
-        <table class="table table-condensed table-hover" style="display:none;" id="feedbacks" data-sort-name="name"
-            data-pagination="true" data-search="true" data-sortable="true">
-            <thead>
-                <tr>
-                    <th data-field="feedback" data-sortable="true">Feedback</th>
-                    <th data-field="date" data-sortable="true">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+
+<body>
+    <nav style="opacity:0.85" class="navbar fixed-top part1 navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index"> <img style="height: 35px" src="HELSINKI_Tunnus_MUSTA.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                    <li class="nav-item">
+                            <a class="nav-link" href="index">Home </a>
+                        </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="answers">Answer </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="feedbacks">Feedback <span class="sr-only">(current)</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class=""
+        style="position: absolute; top: 100px;display: flex;justify-content: center;width: 100%;padding: 0 30px;">
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover" style="display:none;" id="feedbacks" data-sort-name="name"
+                data-pagination="true" data-search="true" data-sortable="true">
+                <thead>
+                    <tr>
+                        <th data-field="feedback" data-sortable="true">Feedback</th>
+                        <th data-field="date" data-sortable="true">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-
-
-<p id="yy" style="display:none"><%= posts %></p>
-
-
-
+    <p id="yy" style="display:none"><%= posts %></p>
+</body>
 <script>
     var answers = JSON.parse(document.getElementById("yy").innerText);
     var $table = $('#feedbacks')
@@ -43,19 +68,5 @@ style="background-color: #F4F4F8;width: 100%;justify-content: center;display: fl
     $table.bootstrapTable({ data: data1, })
     document.getElementById("feedbacks").style.display = "table"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
+<% include ./partials/footer %>
