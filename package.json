@@ -1,16 +1,19 @@
 {
   "name": "guudlyf",
-  "version": "6.11.3",
+  "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "start": "node app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "build": "ng build",
+  "heroku-postbuild": "ng build --prod"
   },
   "engines": {
-    "node": "12.9.0"
+    "node": "12.9.0",
+    "npm": "6.11.3"
+
   },
   "author": "",
   "license": "ISC",
