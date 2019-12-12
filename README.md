@@ -30,7 +30,7 @@ Survey has overall 8 answers and 5 different choices to answer. User chooses ans
 In data visualization users can choose school and whether they are students or teachers to get the data visualization. This page is only available for admins (e.g. teachers).
 ![charts](https://user-images.githubusercontent.com/23027158/70750254-c17f3400-1d36-11ea-9261-114dd3f03988.PNG)
   
---
+---
 
 ## Feedback  
 
