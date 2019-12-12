@@ -1,24 +1,8 @@
 <% include ./partials/header %>
-
-<style>
-    .fixed-table-body {
-        height: auto !important
-    }
-
-
-    @media only screen and (max-width: 500px) {
-
-        .part1 {
-            position: static !important;
-        }
-
-
-
-    }
-</style>
+<title>Feedback</title>
 
 <body>
-    <nav style="opacity:0.85" class="navbar fixed-top part1 navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index"> <img style="height: 35px" src="HELSINKI_Tunnus_MUSTA.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,9 +10,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                    <li class="nav-item">
-                            <a class="nav-link" href="index">Home </a>
-                        </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index">Home </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="answers">Answer </a>
                 </li>
@@ -39,7 +23,7 @@
             </ul>
         </div>
     </nav>
-    <div class=""style="display: flex;justify-content: center;width: 100%;padding: 0 30px;">
+    <div style="display: flex;justify-content: center;width: 100%;padding: 0 30px;">
         <div class="table-responsive">
             <table class="table table-condensed table-hover" style="display:none;" id="feedbacks" data-sort-name="name"
                 data-pagination="true" data-search="true" data-sortable="true">
@@ -54,17 +38,16 @@
             </table>
         </div>
     </div>
-    <p id="yy" style="display:none"><%= posts %></p>
+    <p id="api" style="display:none"><%= posts %></p>
 </body>
 <script>
-    var answers = JSON.parse(document.getElementById("yy").innerText);
-    var $table = $('#feedbacks')
-    var data1 = [];
-    answers.map(item => {
-        data1.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'feedback': item.feedback, 'date': moment(item.date).format('lll') })
+    var data = JSON.parse(document.getElementById("api").innerText);
+    var feedbacks = [];
+    data.map(item => {
+        feedbacks.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'feedback': item.feedback, 'date': moment(item.date).format('lll') })
     })
 
-    $table.bootstrapTable({ data: data1, })
+    $('#feedbacks').bootstrapTable({ data: feedbacks, })
     document.getElementById("feedbacks").style.display = "table"
 
 </script>

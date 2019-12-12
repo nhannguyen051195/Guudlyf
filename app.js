@@ -15,17 +15,15 @@ mongoose.connect("mongodb+srv://guudlyf:guudlyf123@cluster0-wzmbn.mongodb.net/te
     console.log('Connection to MongoDB failed :( ' + err);
 });
 
-const questionsList = require("./routes/questions");
+const survey = require("./routes/questions");
 const answers = require("./routes/answers");
-const feedback = require("./routes/feedbacks");
+const feedbacks = require("./routes/feedbacks");
 
-
-
-app.get("/", questionsList);
+app.get("/", survey);
 
 // Middlewares
 app.use("/answers", answers);
-app.use("/feedbacks", feedback);
+app.use("/feedbacks", feedbacks);
 
 
 app.set('views', './views');

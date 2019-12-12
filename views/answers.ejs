@@ -1,19 +1,9 @@
 <% include ./partials/header %>
-<title>Answer statistics</title>
+<title>Answer</title>
 <style>
-    .fixed-table-body {
-        height: auto !important
-    }
-
-
     .chart {
-        /*   min-width: 310px;
-        height: 400px;
-        max-width: 500px; */
         height: 400px;
         width: 425px;
-
-
         padding: 10px;
         border: 1px solid #2AB7CA;
         border-radius: 50px;
@@ -28,12 +18,8 @@
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
         grid-gap: 8rem;
         margin-bottom: 30px;
-        /* height: calc(100vh - 100px);
-        overflow: auto; */
         position: absolute;
         top: 200px;
-
-
 
     }
 
@@ -45,18 +31,16 @@
     }
 
     @media only screen and (max-width: 500px) {
-
-        .part1,
-        .part2,
-        .part3 {
+        .peopleGroup_div,
+        .chart_container {
             position: static !important;
         }
 
-        .part2 {
+        .peopleGroup_div {
             flex-direction: column;
         }
 
-        .part2 button {
+        .peopleGroup_div button {
             margin: 10px !important
         }
 
@@ -64,8 +48,6 @@
     }
 
     @media only screen and (max-width: 400px) {
-
-
         .chart {
 
             width: 350px;
@@ -73,10 +55,7 @@
         }
     }
 
-
-
     @media only screen and (max-width: 1024px) {
-
         .chart {
 
             height: 400px;
@@ -86,7 +65,6 @@
     }
 
     @media only screen and (min-width: 1025px) {
-
         .chart {
 
             height: 400px;
@@ -98,7 +76,7 @@
 
 <body>
 
-    <nav style="opacity:0.85" class="navbar fixed-top part1 navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index"> <img style="height: 35px" src="HELSINKI_Tunnus_MUSTA.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,13 +93,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="feedbacks">Feedback</a>
                 </li>
-
             </ul>
         </div>
     </nav>
 
-    <div class="part2"
-        style="width: 100%;top: 100px;align-self: center;justify-content: center;display: flex;position: absolute;">
+    <div class="peopleGroup_div d-flex justify-content-center align-self-center w-100">
         <div style="margin: 10px">
             <label for="peopleGroup">People group:</label>
             <select class="form-control" id="peopleGroup" style="width: 150px">
@@ -139,33 +115,32 @@
             </select>
         </div>
         <div>
-            <button style="margin-top: 42px" onclick="drawCharts()" type="button" class="btn btn-success">Draw chart <i
+            <button style="margin-top: 42px; background-color: #2AB7CA; color:white;" onclick="drawCharts()" type="button" class="btn">Draw chart <i
                     class="fa fa-pie-chart" aria-hidden="true"></i>
             </button>
         </div>
     </div>
-    <div class="part3" id="container">
+    <div class="chart_container" id="container">
     </div>
-
-
-
-
-    <p id="yy" style="display:none"><%= posts %></p>
+    <p id="api" style="display:none"><%= posts %></p>
 </body>
 <script>
-    var surveys = JSON.parse(document.getElementById("yy").innerText);
+    var surveys = JSON.parse(document.getElementById("api").innerText);
     var $table = $('#answers')
 
     var drawCharts = function () {
         $('#container').empty()
+        // CATEGORIZE ANSWERS BY PEOPLE GROUP AND SCHOOL NAME
         let answers = surveys.filter(item => item.peopleGroup == $("#peopleGroup").val() && item.schoolname == $("#schoolname").val());
-        console.log(answers)
+
+        // CATEGORIZE QUESTION
         const groupQuestion = (d) => {
             let g = Object.entries(d.reduce((r, c) => (r[c.questionId] = [...r[c.questionId] || [], c], r), {}))
             return g.reduce((r, c) => (r.children.push(
                 { name: c[0], children: c[1] }), r), { name: d[0], children: [] })
         }
 
+        // CATEGORIZE ANSWER
         const groupAnswer = (d) => {
             let g = Object.entries(d.reduce((r, c) => (r[c.answer] = [...r[c.answer] || [], c], r), {}))
             return g.reduce((r, c) => (r.data.push(
@@ -176,10 +151,7 @@
             return groupAnswer(question.children);
         })
 
-        var data1 = [];
-        answers.map(item => {
-            data1.push({ 'School name': item.schoolname, 'Classroom': item.schoolclass, 'question': item.question, 'answer': item.answer, 'date': moment(item.date).format('lll') })
-        })
+        //START DRAWING CHART, IF NO DATA FOUND, SHOW ALERT
         if (!chartData.length) {
             var container = document.createElement("div");
             container.style.padding = '15px'
@@ -188,14 +160,10 @@
             return
         }
 
-
-
         chartData.map(item => {
-            console.log(item);
             var container = document.createElement("div");
             container.className = 'chart'
             document.getElementById('container').appendChild(container)
-
 
             Highcharts.chart(container, {
                 chart: {
