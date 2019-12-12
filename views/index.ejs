@@ -215,7 +215,7 @@
     }
     .team-logo{
         position: absolute;
-        bottom:20px;
+        bottom:12px;
         width:100%;
         text-align: center;
     }
@@ -660,15 +660,17 @@
 
             var part1 = document.createElement("div")
             // part1.style.height = "25vh";
-            part1.className = 'part1'
+            part1.className = 'part1 '
 
             var part1Container = document.createElement("div");
-            part1Container.style.backgroundColor = '#F4F4F8';
+       /*      part1Container.style.backgroundColor = '#F4F4F8';
             part1Container.style.width = '100%';
             part1Container.style.display = 'flex';
             part1Container.style.justifyContent = 'center';
             part1Container.style.position = 'relative';
-            part1Container.style.height = 'auto';
+            part1Container.style.height = 'auto'; */
+            part1Container.style.backgroundColor = '#F4F4F8';
+            part1Container.className = 'w-100 justify-content-center d-flex position-relative'
 
             var part1Img = document.createElement('img');
             part1Img.style.height = '60px'
@@ -803,20 +805,19 @@
 
             var h6 = document.createElement("h6")
             h6.innerHTML = "Guudlyf 2019";
-            h6.style.position = 'fixed';
-            h6.style.bottom = '25px';
-            h6.style.width = '100%';
-            h6.style.textAlign = 'center';
-            h6.style.color = '#BBBBBB';
             h6.className="team-logo"
+            h6.style.color = '#BBBBBB';
+
 
             part4.appendChild(part4Container)
-            part4.appendChild(h6)
+           // part4.appendChild(h6)
 
             mainContainer.appendChild(part1)
             mainContainer.appendChild(part2)
             mainContainer.appendChild(part3)
             mainContainer.appendChild(part4)
+            mainContainer.appendChild(h6)
+
 
             document.getElementById("container1").appendChild(mainContainer);
             var choices = question.choices
