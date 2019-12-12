@@ -9,6 +9,9 @@
     "start": "node app.js",
     "test": "jest"
   },
+  "engines": {
+    "node": "12.9.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
