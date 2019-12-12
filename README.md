@@ -9,6 +9,8 @@ for comments. The survey has a school name and class that you can set up and whe
 a staff. There is also an easy mode designed for first graders to help them answer the survey.
 
 Demo: https://helsinkigoodlife.herokuapp.com/
+Answers results: https://helsinkigoodlife.herokuapp.com/answers
+Feedback results: https://helsinkigoodlife.herokuapp.com/feedbacks
   
   
 ---
