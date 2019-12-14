@@ -11,6 +11,8 @@ implemented by Node.js and MongoDB using Model-View-Controller (MVC) software de
 * Heroku  
 * VSCode  
 * WebStorm  
+* Jquery
+* Bootstrap 4
   
 QR code for website  
 ![GuudLyf](https://user-images.githubusercontent.com/23027158/70751856-09ec2100-1d3a-11ea-87e6-fbd5a8c84c40.png)  
